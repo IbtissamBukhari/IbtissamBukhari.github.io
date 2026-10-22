@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fraud Detection System · Ibtissam Bukhari</title>
+<meta name="description" content="Fraud Detection System by Syed Ali Ibtissam Bukhari. Scores card transactions for fraud risk in real time and explains every score for the analyst who acts on it.">
+<meta name="author" content="Syed Ali Ibtissam Bukhari">
+<meta name="theme-color" content="#0a1220">
+<link rel="canonical" href="https://ibtissambukhari.github.io/projects/fraud-detection.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fraud Detection System · Ibtissam Bukhari">
+<meta property="og:description" content="Fraud Detection System by Syed Ali Ibtissam Bukhari. Scores card transactions for fraud risk in real time and explains every score for the analyst who acts on it.">
+<meta property="og:url" content="https://ibtissambukhari.github.io/projects/fraud-detection.html">
+<meta property="og:image" content="https://ibtissambukhari.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234cc9ee'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='800' font-size='14' fill='%2304202b' text-anchor='middle'%3EIB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
+    <nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../resume.html">Resume</a><a href="../index.html#contact">Contact</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="wrap detail-hero" aria-labelledby="t">
+  <p class="crumbs"><a href="../projects.html">Projects</a> / Fraud Detection System</p>
+  <p class="eyebrow">binary classification · IEEE-CIS · 590,540 transactions</p>
+  <h1 id="t" class="page-title">Fraud Detection System</h1>
+  <p class="lede">An end-to-end system that scores card transactions for fraud risk and explains every prediction. XGBoost is trained on 590,540 real transactions and served through a FastAPI backend with SHAP explanations and an analyst dashboard.</p>
+  <div class="actions"><a class="btn primary" href="https://fraud-detection-system-wplk.onrender.com">Live demo <span class="arrow" aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/IbtissamBukhari/fraud-detection-system">Code on GitHub</a><a class="btn" href="../projects.html">All projects</a></div>
+</section>
+<div class="wrap">
+  <figure class="figure" style="margin-bottom:40px"><picture><source srcset="../assets/img/fraud.webp" type="image/webp"><img src="../assets/img/fraud.jpg" alt="Fraud detection dashboard with the model's AUC-ROC, dataset size and fraud rate" width="1280" height="720" loading="lazy" decoding="async"></picture><figcaption>The live dashboard: enter a transaction to get a fraud probability, a risk level and the features behind the score.</figcaption></figure>
+  <div class="metrics" style="margin-bottom:56px"><div class="metric"><span class="num">0.911</span><span class="what">AUC-ROC</span><span class="ctx">On 118,108 held-out transactions. 0.5 is random guessing, 1.0 a perfect ranking.</span></div><div class="metric"><span class="num">3.5%</span><span class="what">Fraud rate</span><span class="ctx">Only 1 in 29 transactions is fraud, so accuracy alone would be meaningless.</span></div><div class="metric"><span class="num">434 → 106</span><span class="what">Features</span><span class="ctx">Raw columns cleaned, engineered and selected for the final model.</span></div><div class="metric"><span class="num">10</span><span class="what">Reasons per score</span><span class="ctx">The top SHAP contributions behind every prediction.</span></div></div>
+  <div class="detail-grid">
+    <article class="prose">
+<h2>The problem</h2>
+<p>Fraud is rare: 3.5% of transactions in this dataset. A model that always answers "not fraud" would be 96.5% accurate and catch nothing, so accuracy is the wrong measure. The model has to rank risky transactions above normal ones, and an analyst reviewing a flagged payment needs to see why it was flagged.</p>
+<h2>Data</h2>
+<p>The IEEE-CIS Fraud Detection dataset: 590,540 card transactions with a transaction table and an identity table, 434 raw columns, many of them anonymised. Exploration found strong signals: purchasers with mail.com addresses had a 19% fraud rate, product code C 11.7%, and Discover cards 7.7%, against a 3.5% baseline.</p>
+<h2>Approach</h2>
+<ol class="steps">
+<li><b>Clean and merge.</b> Joined the two tables, cut memory from 2.5 GB to 1.68 GB by downcasting types, dropped 12 columns with more than 90% missing values and filled the rest.</li>
+<li><b>Engineer features.</b> Hour, day and week from the transaction clock, a log-scaled amount, flags for high-risk email domains and card types, and the 20 most informative of 339 anonymised features: 106 features in total.</li>
+<li><b>Handle the imbalance without leakage.</b> Stratified 80/20 split first, label encoders fitted on training data only, then SMOTE on the training set only, so nothing from the test set influences training.</li>
+<li><b>Train and compare.</b> XGBoost and LightGBM with early stopping. XGBoost won and was explained with SHAP TreeExplainer.</li>
+</ol>
+<h2>Results</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Model</th><th class="n">AUC-ROC (test)</th></tr></thead>
+<tbody><tr class="best"><td>XGBoost (selected)</td><td class="n">0.911</td></tr><tr><td>LightGBM</td><td class="n">0.906</td></tr></tbody>
+</table></div>
+<p>AUC-ROC measures ranking quality across all thresholds, which suits a review queue where analysts start from the riskiest payments. It is not a promise of real-world performance: fraud patterns drift over time, and the dataset is a fixed historical sample.</p>
+<h2>System and deployment</h2>
+<div class="flow"><div class="node"><b>Dashboard</b><span>HTML, CSS, JS</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>FastAPI</b><span>validation, /predict</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>XGBoost + SHAP</b><span>score and reasons</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>History</b><span>review and CSV export</span></div></div>
+<p>The API and dashboard run in one Docker container on Render. A Pytest suite and a Docker smoke test run in GitHub Actions on every push.</p>
+<div class="callout"><p><b>A bug worth finding.</b> While polishing the project I found that card and email inputs were silently ignored at prediction time, because the training categories had been encoded twice. I rebuilt the original mapping, fixed the API and added a regression test so it cannot return.</p></div>
+<h2>Limitations</h2>
+<ul><li>Many strong features in the dataset are anonymised, so the demo form can set only the human-readable inputs; the rest use typical values.</li><li>The model is trained on one historical dataset and would need monitoring and retraining for live traffic.</li></ul>
+    </article>
+    <aside class="aside" aria-label="Project facts">
+      <div class="box"><h3>At a glance</h3><ul><li>IEEE-CIS dataset, 590,540 transactions</li><li>Stratified 80/20 split</li><li>XGBoost with SHAP</li><li>FastAPI, Docker, Render</li><li>Tests and CI on every push</li></ul></div>
+      <div class="box"><h3>Tools</h3><ul class="badges"><li>XGBoost</li><li>SHAP</li><li>SMOTE</li><li>FastAPI</li><li>Docker</li><li>GitHub Actions</li></ul></div>
+    </aside>
+  </div>
+  <nav class="pager" aria-label="More projects">
+    <a href="accident-detection.html"><small>Previous</small>AI Road Accident Detection</a>
+    <a class="next" href="sentiment-analysis.html"><small>Next</small>Explainable Sentiment Analysis</a>
+  </nav>
+</div>
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title" style="margin-top:12px">Let's talk about ML engineering roles.</h2>
+        <p>I'm looking for Machine Learning Engineer, Data Scientist and NLP Engineer roles, on-site in Pakistan or remote. Email is the quickest way to reach me.</p>
+      </div>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><a class="v" href="mailto:aliibtissam14@gmail.com">aliibtissam14@gmail.com</a><button class="copy" type="button" id="copy-email" data-copy="aliibtissam14@gmail.com">Copy</button></li>
+        <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/ibtissambukhari">linkedin.com/in/ibtissambukhari</a></li>
+        <li><span class="k">GitHub</span><a class="v" href="https://github.com/IbtissamBukhari">github.com/IbtissamBukhari</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer-in">
+    <span>© 2026 Syed Ali Ibtissam Bukhari · Machine Learning Engineer</span>
+    <nav aria-label="Elsewhere"><a href="https://github.com/IbtissamBukhari">GitHub</a><a href="https://www.linkedin.com/in/ibtissambukhari">LinkedIn</a><a href="mailto:aliibtissam14@gmail.com">Email</a></nav>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

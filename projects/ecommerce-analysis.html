@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>E-Commerce Sales Analysis · Ibtissam Bukhari</title>
+<meta name="description" content="E-Commerce Sales Analysis by Syed Ali Ibtissam Bukhari. What drives revenue on a Brazilian marketplace, and who the customers are, segmented with RFM.">
+<meta name="author" content="Syed Ali Ibtissam Bukhari">
+<meta name="theme-color" content="#0a1220">
+<link rel="canonical" href="https://ibtissambukhari.github.io/projects/ecommerce-analysis.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="E-Commerce Sales Analysis · Ibtissam Bukhari">
+<meta property="og:description" content="E-Commerce Sales Analysis by Syed Ali Ibtissam Bukhari. What drives revenue on a Brazilian marketplace, and who the customers are, segmented with RFM.">
+<meta property="og:url" content="https://ibtissambukhari.github.io/projects/ecommerce-analysis.html">
+<meta property="og:image" content="https://ibtissambukhari.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234cc9ee'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='800' font-size='14' fill='%2304202b' text-anchor='middle'%3EIB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
+    <nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../resume.html">Resume</a><a href="../index.html#contact">Contact</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="wrap detail-hero" aria-labelledby="t">
+  <p class="crumbs"><a href="../projects.html">Projects</a> / E-Commerce Sales Analysis</p>
+  <p class="eyebrow">data analysis · Olist · 96,478 orders</p>
+  <h1 id="t" class="page-title">E-Commerce Sales Analysis</h1>
+  <p class="lede">An analysis of 96,478 delivered orders from Olist, a Brazilian online marketplace: how revenue grew, what sold, where customers are, and an RFM segmentation of all 93,358 customers with an action for each segment.</p>
+  <div class="actions"><a class="btn primary" href="https://ecommerce-dashboard-a9ez.onrender.com">Dashboard <span class="arrow" aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/IbtissamBukhari/ecommerce-sales-analysis">Code on GitHub</a><a class="btn" href="../projects.html">All projects</a></div>
+</section>
+<div class="wrap">
+  <figure class="figure" style="margin-bottom:40px"><picture><source srcset="../assets/img/ecommerce.webp" type="image/webp"><img src="../assets/img/ecommerce.jpg" alt="E-commerce dashboard with revenue, orders, customers and the monthly revenue trend" width="1280" height="720" loading="lazy" decoding="async"></picture><figcaption>The interactive dashboard: headline numbers, the year-over-year comparison and the monthly revenue trend.</figcaption></figure>
+  <div class="metrics" style="margin-bottom:56px"><div class="metric"><span class="num">2.4×</span><span class="what">Revenue growth</span><span class="ctx">January–August 2018 against the same months of 2017.</span></div><div class="metric"><span class="num">1,147</span><span class="what">Black Friday orders</span><span class="ctx">In one day, about 8× a typical day.</span></div><div class="metric"><span class="num">3%</span><span class="what">Repeat customers</span><span class="ctx">Only 3 in 100 customers ever placed a second order.</span></div><div class="metric"><span class="num">62.5%</span><span class="what">Revenue from 3 states</span><span class="ctx">São Paulo, Rio de Janeiro and Minas Gerais.</span></div></div>
+  <div class="detail-grid">
+    <article class="prose">
+<h2>The question</h2>
+<p>What actually drives revenue on the marketplace, and who are the customers? The answer had to hold up: a first version of the analysis called May to August the best season, but the data covers January–August for two years and September–December for only one, which made those months look stronger. Comparing each month with the same month a year earlier showed the real story: growth, not seasonality.</p>
+<h2>Approach</h2>
+<ol class="steps">
+<li><b>Clean and merge.</b> Orders, customers, items, payments and products (110,197 item rows); kept the 96,478 delivered orders, summed multiple payments per order and translated categories to English.</li>
+<li><b>Explore.</b> Revenue trend, year-over-year comparison, categories, states, order values and order timing.</li>
+<li><b>Segment with RFM.</b> Scored every customer on recency, frequency and monetary value and assigned 8 rule-based segments, each with a suggested business action.</li>
+<li><b>Make it reproducible.</b> One command downloads the data; GitHub Actions re-runs every notebook on each push and fails if the results change.</li>
+</ol>
+<h2>Results</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Segment</th><th class="n">Customers</th><th class="n">Avg spend</th><th>Suggested action</th></tr></thead>
+<tbody>
+<tr><td>New Customer</td><td class="n">36,224</td><td class="n">R$ 164</td><td>Second-purchase offer</td></tr>
+<tr><td>Hibernating</td><td class="n">29,009</td><td class="n">R$ 193</td><td>Low-cost reactivation</td></tr>
+<tr><td>Promising</td><td class="n">18,105</td><td class="n">R$ 151</td><td>Follow-up recommendations</td></tr>
+<tr><td>At Risk</td><td class="n">922</td><td class="n">R$ 282</td><td>Win-back campaign</td></tr>
+<tr><td>Champion</td><td class="n">33</td><td class="n">R$ 867</td><td>VIP perks and early access</td></tr>
+</tbody></table></div>
+<p>Retention is the main problem: 97% of customers never came back. Converting even a small share of the 36,224 recent first-time buyers into repeat customers would matter more than anything else in the data.</p>
+<h2>Limitations</h2>
+<ul><li>Less than two full years of data, so seasonality beyond Black Friday cannot be measured reliably.</li><li>RFM thresholds are relative to this dataset, and the segment rules are a common convention rather than fitted to outcomes.</li></ul>
+    </article>
+    <aside class="aside" aria-label="Project facts">
+      <div class="box"><h3>At a glance</h3><ul><li>Olist, 96,478 delivered orders</li><li>93,358 customers segmented</li><li>Interactive dashboard</li><li>Reproducible pipeline in CI</li></ul></div>
+      <div class="box"><h3>Tools</h3><ul class="badges"><li>Pandas</li><li>RFM</li><li>Matplotlib</li><li>JavaScript</li><li>GitHub Actions</li></ul></div>
+    </aside>
+  </div>
+  <nav class="pager" aria-label="More projects">
+    <a href="telco-churn.html"><small>Previous</small>Telco Churn Predictor</a>
+    <a class="next" href="accident-detection.html"><small>Next</small>AI Road Accident Detection</a>
+  </nav>
+</div>
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title" style="margin-top:12px">Let's talk about ML engineering roles.</h2>
+        <p>I'm looking for Machine Learning Engineer, Data Scientist and NLP Engineer roles, on-site in Pakistan or remote. Email is the quickest way to reach me.</p>
+      </div>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><a class="v" href="mailto:aliibtissam14@gmail.com">aliibtissam14@gmail.com</a><button class="copy" type="button" id="copy-email" data-copy="aliibtissam14@gmail.com">Copy</button></li>
+        <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/ibtissambukhari">linkedin.com/in/ibtissambukhari</a></li>
+        <li><span class="k">GitHub</span><a class="v" href="https://github.com/IbtissamBukhari">github.com/IbtissamBukhari</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer-in">
+    <span>© 2026 Syed Ali Ibtissam Bukhari · Machine Learning Engineer</span>
+    <nav aria-label="Elsewhere"><a href="https://github.com/IbtissamBukhari">GitHub</a><a href="https://www.linkedin.com/in/ibtissambukhari">LinkedIn</a><a href="mailto:aliibtissam14@gmail.com">Email</a></nav>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Telco Churn Predictor · Ibtissam Bukhari</title>
+<meta name="description" content="Telco Churn Predictor by Syed Ali Ibtissam Bukhari. Predicts which customers are about to cancel, explains each score and suggests a retention action.">
+<meta name="author" content="Syed Ali Ibtissam Bukhari">
+<meta name="theme-color" content="#0a1220">
+<link rel="canonical" href="https://ibtissambukhari.github.io/projects/telco-churn.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Telco Churn Predictor · Ibtissam Bukhari">
+<meta property="og:description" content="Telco Churn Predictor by Syed Ali Ibtissam Bukhari. Predicts which customers are about to cancel, explains each score and suggests a retention action.">
+<meta property="og:url" content="https://ibtissambukhari.github.io/projects/telco-churn.html">
+<meta property="og:image" content="https://ibtissambukhari.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234cc9ee'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='800' font-size='14' fill='%2304202b' text-anchor='middle'%3EIB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
+    <nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../resume.html">Resume</a><a href="../index.html#contact">Contact</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="wrap detail-hero" aria-labelledby="t">
+  <p class="crumbs"><a href="../projects.html">Projects</a> / Telco Churn Predictor</p>
+  <p class="eyebrow">churn prediction · IBM Telco · 7,043 customers</p>
+  <h1 id="t" class="page-title">Telco Churn Predictor</h1>
+  <p class="lede">Predicts how likely a telecom customer is to cancel, shows exactly which details drive the score and suggests a retention action. Built on the IBM Telco dataset and served through a validated FastAPI API with a web interface.</p>
+  <div class="actions"><a class="btn primary" href="https://telco-churn-predictor-62b1.onrender.com">Live demo <span class="arrow" aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/IbtissamBukhari/telco-churn-predictor">Code on GitHub</a><a class="btn" href="../projects.html">All projects</a></div>
+</section>
+<div class="wrap">
+  <figure class="figure" style="margin-bottom:40px"><picture><source srcset="../assets/img/telco.webp" type="image/webp"><img src="../assets/img/telco.jpg" alt="Churn predictor showing an 82.9% high-risk score, the factors behind it and suggested actions" width="1280" height="720" loading="lazy" decoding="async"></picture><figcaption>A high-risk customer: 82.9% churn probability, the factors that raise it, and suggested retention actions.</figcaption></figure>
+  <div class="metrics" style="margin-bottom:56px"><div class="metric"><span class="num">76%</span><span class="what">Recall on churners</span><span class="ctx">283 of 371 customers who left were flagged in the test set.</span></div><div class="metric"><span class="num">51%</span><span class="what">Precision</span><span class="ctx">About half of flagged customers really left: the accepted cost of high recall.</span></div><div class="metric"><span class="num">0.84</span><span class="what">ROC-AUC</span><span class="ctx">Ranking quality across all thresholds on 1,402 unseen customers.</span></div><div class="metric"><span class="num">26.5%</span><span class="what">Baseline churn</span><span class="ctx">Predicting 'stays' for everyone would be 73.5% accurate and catch no one.</span></div></div>
+  <div class="detail-grid">
+    <article class="prose">
+<h2>The problem</h2>
+<p>For a retention team, missing a customer who is about to leave costs more than offering a discount to someone who would have stayed. So the model is chosen for recall, and every score has to come with a reason a retention agent can act on.</p>
+<h2>Data</h2>
+<p>The IBM Telco Customer Churn dataset: 7,043 customers and 21 columns. After converting TotalCharges to a number and removing 11 blank rows and 22 duplicates, 7,010 customers remain. Contract type and tenure drive churn the most: 43% of month-to-month customers left against 3% on two-year contracts, and nearly half of first-year customers cancelled.</p>
+<h2>Approach</h2>
+<ol class="steps">
+<li><b>Encode and scale.</b> Binary columns to 0/1, one-hot encoding for the rest, tenure and monthly charges scaled to 0–1. TotalCharges was dropped because it is close to tenure times monthly charges.</li>
+<li><b>Compare models.</b> Logistic Regression, Random Forest and XGBoost on a stratified 80/20 split.</li>
+<li><b>Tune for recall.</b> Regularisation strength chosen by 5-fold cross-validation on recall.</li>
+<li><b>Make it one pipeline.</b> Preprocessing and model in a single scikit-learn pipeline, with the scaler fitted on training data only, so the API applies exactly what was trained.</li>
+</ol>
+<h2>Results</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Model</th><th class="n">Recall</th><th class="n">Precision</th><th class="n">Accuracy</th></tr></thead>
+<tbody><tr class="best"><td>Logistic Regression (tuned)</td><td class="n">76.3%</td><td class="n">50.7%</td><td class="n">74.1%</td></tr>
+<tr><td>XGBoost</td><td class="n">63.9%</td><td class="n">52.3%</td><td class="n">75.0%</td></tr>
+<tr><td>Random Forest</td><td class="n">45.6%</td><td class="n">60.6%</td><td class="n">77.7%</td></tr></tbody></table></div>
+<p>Because the model is linear, each explanation is exact rather than approximated: every contribution is the coefficient times the difference from the average customer, and they add up to the model's output. A test checks this.</p>
+<h2>System and deployment</h2>
+<div class="flow"><div class="node"><b>Web app</b><span>live scoring as you type</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>FastAPI</b><span>validated input</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>scikit-learn pipeline</b><span>score + factors</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>Actions</b><span>retention suggestions</span></div></div>
+<p>The Docker image downloads the data and trains the model at build time, so the served model always matches the library version. GitHub Actions retrains, checks the metrics against the committed results, runs the tests and smoke-tests the container.</p>
+<h2>Limitations</h2>
+<ul><li>IBM's sample data describes a fictional company, so the model demonstrates the approach rather than being ready for real customers.</li><li>Precision is about 51%; the threshold can be raised if retention offers are expensive.</li></ul>
+    </article>
+    <aside class="aside" aria-label="Project facts">
+      <div class="box"><h3>At a glance</h3><ul><li>IBM Telco, 7,043 customers</li><li>Recall-tuned Logistic Regression</li><li>Exact per-customer explanations</li><li>FastAPI, Docker, Render</li><li>Metrics checked in CI</li></ul></div>
+      <div class="box"><h3>Tools</h3><ul class="badges"><li>scikit-learn</li><li>Logistic Regression</li><li>FastAPI</li><li>Pytest</li><li>Docker</li></ul></div>
+    </aside>
+  </div>
+  <nav class="pager" aria-label="More projects">
+    <a href="sentiment-analysis.html"><small>Previous</small>Explainable Sentiment Analysis</a>
+    <a class="next" href="ecommerce-analysis.html"><small>Next</small>E-Commerce Sales Analysis</a>
+  </nav>
+</div>
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title" style="margin-top:12px">Let's talk about ML engineering roles.</h2>
+        <p>I'm looking for Machine Learning Engineer, Data Scientist and NLP Engineer roles, on-site in Pakistan or remote. Email is the quickest way to reach me.</p>
+      </div>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><a class="v" href="mailto:aliibtissam14@gmail.com">aliibtissam14@gmail.com</a><button class="copy" type="button" id="copy-email" data-copy="aliibtissam14@gmail.com">Copy</button></li>
+        <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/ibtissambukhari">linkedin.com/in/ibtissambukhari</a></li>
+        <li><span class="k">GitHub</span><a class="v" href="https://github.com/IbtissamBukhari">github.com/IbtissamBukhari</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer-in">
+    <span>© 2026 Syed Ali Ibtissam Bukhari · Machine Learning Engineer</span>
+    <nav aria-label="Elsewhere"><a href="https://github.com/IbtissamBukhari">GitHub</a><a href="https://www.linkedin.com/in/ibtissambukhari">LinkedIn</a><a href="mailto:aliibtissam14@gmail.com">Email</a></nav>
+  </div>
+</footer>
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
