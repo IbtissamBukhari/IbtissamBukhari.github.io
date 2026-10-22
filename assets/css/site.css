@@ -282,10 +282,15 @@ tr.best td { color: var(--accent); font-weight: 600; background: #f0f8fc; }
 }
 @media (max-width: 420px) {
   .metrics { grid-template-columns: 1fr; }
+  .nav { flex-wrap: nowrap; gap: 0; margin-left: -8px; }
+  .nav a { padding: 6px 8px; font-size: 0.86rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
+}
+@media (max-width: 345px) {
+  .nav a { padding: 6px 6px; font-size: 0.8rem; }
 }
