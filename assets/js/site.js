@@ -53,7 +53,7 @@
         const b = nodes[j];
         const dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
         if (d < max) {
-          ctx.strokeStyle = 'rgba(76, 201, 238,' + (0.16 * (1 - d / max)).toFixed(3) + ')';
+          ctx.strokeStyle = 'rgba(10, 122, 160,' + (0.22 * (1 - d / max)).toFixed(3) + ')';
           ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
@@ -61,7 +61,7 @@
     }
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
-      ctx.fillStyle = 'rgba(76, 201, 238, 0.55)';
+      ctx.fillStyle = 'rgba(10, 122, 160, 0.5)';
       ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
     }
   }
