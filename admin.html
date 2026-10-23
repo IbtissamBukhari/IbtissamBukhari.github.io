@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Admin · Ibtissam Bukhari</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5f8fc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234cc9ee'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='800' font-size='14' fill='%2304202b' text-anchor='middle'%3EIB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=5">
+<link rel="stylesheet" href="assets/css/admin.css?v=1">
+</head>
+<body class="admin" data-base="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-in">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">IB</span>Portfolio admin</a>
+    <nav class="nav" aria-label="Admin">
+      <a href="index.html" target="_blank" rel="noopener">View site ↗</a>
+      <button type="button" class="nav-btn" id="signout" hidden>Sign out</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap adm">
+
+  <!-- Sign in -->
+  <section id="view-signin" class="adm-signin" aria-labelledby="signin-title">
+    <p class="eyebrow">Private</p>
+    <h1 id="signin-title" class="page-title">Sign in to manage your portfolio</h1>
+    <p class="lede">This page only works with a GitHub access key that can change the portfolio repository, so nobody else can edit the site. The key stays in this browser and is sent only to GitHub.</p>
+    <form id="signin-form" class="adm-card adm-form" autocomplete="off">
+      <label for="token">GitHub access key</label>
+      <input id="token" name="token" type="password" spellcheck="false" placeholder="github_pat_…" required>
+      <label class="check"><input type="checkbox" id="remember"> Keep me signed in on this device</label>
+      <button class="btn primary" type="submit">Sign in</button>
+      <p class="form-msg" id="signin-msg" role="alert"></p>
+    </form>
+    <details class="adm-help">
+      <summary>How to get an access key (one time, about 2 minutes)</summary>
+      <ol>
+        <li>Sign in to GitHub as <b>IbtissamBukhari</b> and open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">New fine-grained token</a>.</li>
+        <li>Name it "Portfolio admin" and pick an expiry (for example 1 year).</li>
+        <li>Under <b>Repository access</b>, choose <b>Only select repositories</b> and select <b>IbtissamBukhari.github.io</b>.</li>
+        <li>Under <b>Permissions → Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>.</li>
+        <li>Click <b>Generate token</b>, copy it and paste it above. GitHub shows it only once, so keep it somewhere safe, like a password manager.</li>
+      </ol>
+      <p class="muted">The key can only change files in the portfolio repository, nothing else on the account. You can delete it on GitHub at any time.</p>
+    </details>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="view-dash" hidden aria-labelledby="dash-title">
+    <div class="adm-head">
+      <div>
+        <p class="eyebrow" id="who">Signed in</p>
+        <h1 id="dash-title" class="page-title">Dashboard</h1>
+      </div>
+      <button class="btn primary" type="button" id="add-project">+ Add project</button>
+    </div>
+
+    <div class="adm-stats" id="stats"></div>
+
+    <div class="adm-tabs" role="tablist" aria-label="Sections">
+      <button role="tab" type="button" id="tab-projects" aria-controls="panel-projects" aria-selected="true">Projects</button>
+      <button role="tab" type="button" id="tab-repos" aria-controls="panel-repos" aria-selected="false" tabindex="-1">GitHub repositories</button>
+    </div>
+
+    <div role="tabpanel" id="panel-projects" aria-labelledby="tab-projects">
+      <div class="adm-toolbar">
+        <p class="muted">Order here is the order on the site. Featured projects (up to 3) appear on the home page.</p>
+        <button class="btn small" type="button" id="check-demos">Check live demos</button>
+      </div>
+      <ol class="adm-list" id="project-list"></ol>
+    </div>
+
+    <div role="tabpanel" id="panel-repos" aria-labelledby="tab-repos" hidden>
+      <div class="adm-toolbar"><p class="muted">Public repositories on github.com/IbtissamBukhari. Add any of them to the portfolio in one click.</p></div>
+      <ul class="adm-repos" id="repo-list"><li class="muted">Loading…</li></ul>
+    </div>
+  </section>
+
+  <!-- Editor -->
+  <section id="view-edit" hidden aria-labelledby="edit-title">
+    <p class="crumbs"><a href="#" id="back">Dashboard</a> / <span id="edit-crumb">New project</span></p>
+    <h1 id="edit-title" class="page-title">New project</h1>
+    <div class="adm-edit">
+      <form id="edit-form" class="adm-form adm-card" novalidate>
+        <fieldset>
+          <legend>Basics</legend>
+          <label for="f-title">Title <span class="req">required</span></label>
+          <input id="f-title" required maxlength="80">
+          <label for="f-summary">One-line summary <span class="req">required</span></label>
+          <textarea id="f-summary" rows="3" required maxlength="220"></textarea>
+          <div class="row2">
+            <div><label for="f-category">Area</label><input id="f-category" list="cat-list" placeholder="Machine Learning"><datalist id="cat-list"></datalist></div>
+            <div><label for="f-tag">Label on the image</label><input id="f-tag" placeholder="Live demo" maxlength="24"></div>
+          </div>
+          <label for="f-spec">Small line above the title</label>
+          <input id="f-spec" placeholder="binary classification · dataset · size" maxlength="90">
+        </fieldset>
+
+        <fieldset>
+          <legend>Key results <span class="hint">up to 3, shown as chips</span></legend>
+          <div class="results" id="f-results"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tools</legend>
+          <label for="f-stack">Tools, separated by commas</label>
+          <input id="f-stack" placeholder="Python, scikit-learn, FastAPI, Docker">
+        </fieldset>
+
+        <fieldset>
+          <legend>Links</legend>
+          <div class="row2">
+            <div><label for="f-demo">Live demo URL</label><input id="f-demo" type="url" placeholder="https://…"></div>
+            <div><label for="f-demoLabel">Demo button text</label><input id="f-demoLabel" placeholder="Live demo" maxlength="20"></div>
+          </div>
+          <label for="f-code">GitHub URL</label><input id="f-code" type="url" placeholder="https://github.com/IbtissamBukhari/…">
+          <label for="f-linkedin">LinkedIn post URL</label><input id="f-linkedin" type="url" placeholder="https://www.linkedin.com/feed/update/…">
+          <label for="f-caseStudy">Case study page</label><input id="f-caseStudy" placeholder="projects/my-project.html or https://…">
+          <p class="hint">"View project" opens the case study if there is one, otherwise the live demo, otherwise GitHub.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Image</legend>
+          <div class="img-row">
+            <div class="img-prev" id="img-prev"></div>
+            <div>
+              <label for="f-image" class="btn small">Upload screenshot</label>
+              <input id="f-image" type="file" accept="image/png,image/jpeg,image/webp" class="visually-file">
+              <button type="button" class="btn small ghost" id="img-remove">Remove image</button>
+              <p class="hint">A wide screenshot works best (16:9). It's resized to 1280px automatically.</p>
+            </div>
+          </div>
+          <label for="f-imageAlt">Image description (for screen readers)</label>
+          <input id="f-imageAlt" maxlength="160">
+          <label for="f-schematic">No image? Steps to draw instead, separated by commas</label>
+          <input id="f-schematic" placeholder="Data, Model, API, Dashboard">
+        </fieldset>
+
+        <fieldset>
+          <legend>Visibility</legend>
+          <label class="check"><input type="checkbox" id="f-featured"> Feature on the home page</label>
+          <label class="check"><input type="checkbox" id="f-hidden"> Hide from the site (keep as draft)</label>
+        </fieldset>
+
+        <p class="form-msg" id="edit-msg" role="alert"></p>
+        <div class="actions">
+          <button class="btn primary" type="submit">Save project</button>
+          <button class="btn" type="button" id="cancel-edit">Cancel</button>
+        </div>
+      </form>
+
+      <aside class="adm-preview" aria-label="Live preview">
+        <p class="eyebrow">Preview</p>
+        <div id="preview"></div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<div class="adm-publish" id="publish-bar" hidden>
+  <div class="wrap">
+    <span id="publish-text">Unpublished changes</span>
+    <div class="actions">
+      <button class="btn small" type="button" id="discard">Discard</button>
+      <button class="btn small primary" type="button" id="publish">Publish to site</button>
+    </div>
+  </div>
+</div>
+<div class="adm-toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/js/projects.js?v=5"></script>
+<script src="assets/js/admin.js?v=1"></script>
+</body>
+</html>

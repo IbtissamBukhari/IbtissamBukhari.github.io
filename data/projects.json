@@ -1,0 +1,263 @@
+[
+  {
+    "id": "fraud-detection",
+    "title": "Fraud Detection System",
+    "summary": "Scores card transactions for fraud risk in real time and explains every score for the analyst who acts on it.",
+    "spec": "binary classification · IEEE-CIS · 590,540 transactions",
+    "tag": "Live demo",
+    "category": "Machine Learning",
+    "image": "assets/img/fraud.jpg",
+    "imageWebp": "assets/img/fraud.webp",
+    "imageAlt": "Fraud detection dashboard with the model's AUC-ROC, dataset size and fraud rate",
+    "schematic": [],
+    "results": [
+      {
+        "value": "0.911",
+        "label": "AUC-ROC"
+      },
+      {
+        "value": "590K",
+        "label": "transactions"
+      },
+      {
+        "value": "106",
+        "label": "features"
+      }
+    ],
+    "stack": [
+      "XGBoost",
+      "SHAP",
+      "SMOTE",
+      "FastAPI",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "links": {
+      "demo": "https://fraud-detection-system-wplk.onrender.com",
+      "demoLabel": "Live demo",
+      "code": "https://github.com/IbtissamBukhari/fraud-detection-system",
+      "caseStudy": "projects/fraud-detection.html",
+      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7518983911654424576/"
+    },
+    "featured": true,
+    "hidden": false
+  },
+  {
+    "id": "sentiment-analysis",
+    "title": "Explainable Sentiment Analysis",
+    "summary": "Classifies reviews as positive, neutral or negative and highlights the words behind each prediction.",
+    "spec": "3-class NLP · RoBERTa · 8-bit ONNX",
+    "tag": "Live demo",
+    "category": "NLP",
+    "image": "assets/img/sentiment.jpg",
+    "imageWebp": "assets/img/sentiment.webp",
+    "imageAlt": "Sentiment app showing a positive prediction at 98.5% and the words that drove it",
+    "schematic": [],
+    "results": [
+      {
+        "value": "81%",
+        "label": "correct on pos/neg"
+      },
+      {
+        "value": "4×",
+        "label": "smaller model"
+      },
+      {
+        "value": "375 MB",
+        "label": "peak memory"
+      }
+    ],
+    "stack": [
+      "RoBERTa",
+      "Transformers",
+      "LIME",
+      "ONNX Runtime",
+      "FastAPI",
+      "Docker"
+    ],
+    "links": {
+      "demo": "https://sentiment-analyzer-rm0p.onrender.com",
+      "demoLabel": "Live demo",
+      "code": "https://github.com/IbtissamBukhari/sentiment-analyzer",
+      "caseStudy": "projects/sentiment-analysis.html",
+      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7519340059549024256/"
+    },
+    "featured": true,
+    "hidden": false
+  },
+  {
+    "id": "telco-churn",
+    "title": "Telco Churn Predictor",
+    "summary": "Predicts which customers are about to cancel, explains each score and suggests a retention action.",
+    "spec": "churn prediction · IBM Telco · 7,043 customers",
+    "tag": "Live demo",
+    "category": "Machine Learning",
+    "image": "assets/img/telco.jpg",
+    "imageWebp": "assets/img/telco.webp",
+    "imageAlt": "Churn predictor showing an 82.9% high-risk score, the factors behind it and suggested actions",
+    "schematic": [],
+    "results": [
+      {
+        "value": "76%",
+        "label": "of churners caught"
+      },
+      {
+        "value": "0.84",
+        "label": "ROC-AUC"
+      },
+      {
+        "value": "exact",
+        "label": "explanations"
+      }
+    ],
+    "stack": [
+      "scikit-learn",
+      "Logistic Regression",
+      "FastAPI",
+      "Pytest",
+      "Docker"
+    ],
+    "links": {
+      "demo": "https://telco-churn-predictor-62b1.onrender.com",
+      "demoLabel": "Live demo",
+      "code": "https://github.com/IbtissamBukhari/telco-churn-predictor",
+      "caseStudy": "projects/telco-churn.html",
+      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7518724342030217216/"
+    },
+    "featured": true,
+    "hidden": false
+  },
+  {
+    "id": "ecommerce-analysis",
+    "title": "E-Commerce Sales Analysis",
+    "summary": "What drives revenue on a Brazilian marketplace, and who the customers are, segmented with RFM.",
+    "spec": "data analysis · Olist · 96,478 orders",
+    "tag": "Dashboard",
+    "category": "Data Analysis",
+    "image": "assets/img/ecommerce.jpg",
+    "imageWebp": "assets/img/ecommerce.webp",
+    "imageAlt": "E-commerce dashboard with revenue, orders, customers and the monthly revenue trend",
+    "schematic": [],
+    "results": [
+      {
+        "value": "2.4×",
+        "label": "revenue growth"
+      },
+      {
+        "value": "3%",
+        "label": "repeat buyers"
+      },
+      {
+        "value": "8",
+        "label": "customer segments"
+      }
+    ],
+    "stack": [
+      "Pandas",
+      "RFM",
+      "Matplotlib",
+      "JavaScript",
+      "GitHub Actions"
+    ],
+    "links": {
+      "demo": "https://ecommerce-dashboard-a9ez.onrender.com",
+      "demoLabel": "Dashboard",
+      "code": "https://github.com/IbtissamBukhari/ecommerce-sales-analysis",
+      "caseStudy": "projects/ecommerce-analysis.html",
+      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7518419239867871232/"
+    },
+    "featured": false,
+    "hidden": false
+  },
+  {
+    "id": "accident-detection",
+    "title": "AI Road Accident Detection",
+    "summary": "Detects road accidents in video in real time and starts the emergency response automatically.",
+    "spec": "object detection · video · YOLOv12",
+    "tag": "Final year project",
+    "category": "Computer Vision",
+    "image": "",
+    "imageWebp": "",
+    "imageAlt": "",
+    "schematic": [
+      "Video feed",
+      "YOLOv12 detector",
+      "AI agent report",
+      "Emergency alert"
+    ],
+    "results": [
+      {
+        "value": "88.6%",
+        "label": "mAP@50"
+      },
+      {
+        "value": "87%",
+        "label": "precision"
+      },
+      {
+        "value": "84%",
+        "label": "recall"
+      }
+    ],
+    "stack": [
+      "YOLOv12",
+      "OpenCV",
+      "FastAPI",
+      "JWT",
+      "SQLAlchemy",
+      "Docker"
+    ],
+    "links": {
+      "demo": "",
+      "demoLabel": "",
+      "code": "",
+      "caseStudy": "projects/accident-detection.html",
+      "linkedin": ""
+    },
+    "featured": false,
+    "hidden": false
+  },
+  {
+    "id": "customer-churn-mlops",
+    "title": "Customer Churn with MLOps",
+    "summary": "An end-to-end churn system built the way a production team runs one: tracked experiments, a model registry, tests and CI.",
+    "spec": "MLOps · experiment tracking · CI",
+    "tag": "In progress",
+    "category": "MLOps",
+    "image": "",
+    "imageWebp": "",
+    "imageAlt": "",
+    "schematic": [
+      "Data",
+      "MLflow tracking",
+      "Model registry",
+      "FastAPI + CI"
+    ],
+    "results": [
+      {
+        "value": "MLflow",
+        "label": "tracking"
+      },
+      {
+        "value": "CI",
+        "label": "on every push"
+      }
+    ],
+    "stack": [
+      "MLflow",
+      "FastAPI",
+      "Docker",
+      "GitHub Actions",
+      "Pytest"
+    ],
+    "links": {
+      "demo": "",
+      "demoLabel": "",
+      "code": "https://github.com/IbtissamBukhari/customer-churn-mlops",
+      "caseStudy": "",
+      "linkedin": ""
+    },
+    "featured": false,
+    "hidden": false
+  }
+]

@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=4">
+<link rel="stylesheet" href="assets/css/site.css?v=5">
 </head>
-<body>
+<body data-base="">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="header-in">
@@ -69,40 +69,10 @@
       <div><p class="eyebrow">Featured projects</p><h2 id="featured-title" style="margin-top:10px">Live, tested and open on GitHub</h2></div>
       <a class="btn" href="projects.html">All projects <span class="arrow" aria-hidden="true">→</span></a>
     </div>
-    <div class="grid-3">
-<article class="pcard reveal">
-  <div class="shot"><picture><source srcset="assets/img/fraud.webp" type="image/webp"><img src="assets/img/fraud.jpg" alt="Fraud detection dashboard with the model's AUC-ROC, dataset size and fraud rate" width="1280" height="720" loading="lazy" decoding="async"></picture><span class="tag">Live demo</span></div>
-  <div class="pbody">
-    <div class="spec">binary classification · IEEE-CIS · 590,540 transactions</div>
-    <h3>Fraud Detection System</h3>
-    <p>Scores card transactions for fraud risk in real time and explains every score for the analyst who acts on it.</p>
-    <ul class="chips" aria-label="Key results"><li><b>0.911</b> AUC-ROC</li><li><b>590K</b> transactions</li><li><b>106</b> features</li></ul>
-    <ul class="badges" aria-label="Tools"><li>XGBoost</li><li>SHAP</li><li>SMOTE</li><li>FastAPI</li><li>Docker</li><li>GitHub Actions</li></ul>
-    <div class="plinks"><a href="https://fraud-detection-system-wplk.onrender.com">Live demo</a><a href="https://github.com/IbtissamBukhari/fraud-detection-system">Code</a><a class="case" href="projects/fraud-detection.html">Case study <span class="arrow" aria-hidden="true">→</span></a></div>
-  </div>
-</article>
-<article class="pcard reveal">
-  <div class="shot"><picture><source srcset="assets/img/sentiment.webp" type="image/webp"><img src="assets/img/sentiment.jpg" alt="Sentiment app showing a positive prediction at 98.5% and the words that drove it" width="1280" height="720" loading="lazy" decoding="async"></picture><span class="tag">Live demo</span></div>
-  <div class="pbody">
-    <div class="spec">3-class NLP · RoBERTa · 8-bit ONNX</div>
-    <h3>Explainable Sentiment Analysis</h3>
-    <p>Classifies reviews as positive, neutral or negative and highlights the words behind each prediction.</p>
-    <ul class="chips" aria-label="Key results"><li><b>81%</b> correct on pos/neg</li><li><b>4×</b> smaller model</li><li><b>375 MB</b> peak memory</li></ul>
-    <ul class="badges" aria-label="Tools"><li>RoBERTa</li><li>Transformers</li><li>LIME</li><li>ONNX Runtime</li><li>FastAPI</li><li>Docker</li></ul>
-    <div class="plinks"><a href="https://sentiment-analyzer-rm0p.onrender.com">Live demo</a><a href="https://github.com/IbtissamBukhari/sentiment-analyzer">Code</a><a class="case" href="projects/sentiment-analysis.html">Case study <span class="arrow" aria-hidden="true">→</span></a></div>
-  </div>
-</article>
-<article class="pcard reveal">
-  <div class="shot"><picture><source srcset="assets/img/telco.webp" type="image/webp"><img src="assets/img/telco.jpg" alt="Churn predictor showing an 82.9% high-risk score, the factors behind it and suggested actions" width="1280" height="720" loading="lazy" decoding="async"></picture><span class="tag">Live demo</span></div>
-  <div class="pbody">
-    <div class="spec">churn prediction · IBM Telco · 7,043 customers</div>
-    <h3>Telco Churn Predictor</h3>
-    <p>Predicts which customers are about to cancel, explains each score and suggests a retention action.</p>
-    <ul class="chips" aria-label="Key results"><li><b>76%</b> of churners caught</li><li><b>0.84</b> ROC-AUC</li><li><b>exact</b> explanations</li></ul>
-    <ul class="badges" aria-label="Tools"><li>scikit-learn</li><li>Logistic Regression</li><li>FastAPI</li><li>Pytest</li><li>Docker</li></ul>
-    <div class="plinks"><a href="https://telco-churn-predictor-62b1.onrender.com">Live demo</a><a href="https://github.com/IbtissamBukhari/telco-churn-predictor">Code</a><a class="case" href="projects/telco-churn.html">Case study <span class="arrow" aria-hidden="true">→</span></a></div>
-  </div>
-</article>
+    <div class="grid-3" data-projects="featured">
+<article class="pcard reveal" data-category="Machine Learning"><div class="shot"><picture><source srcset="assets/img/fraud.webp" type="image/webp"><img src="assets/img/fraud.jpg" alt="Fraud detection dashboard with the model&#x27;s AUC-ROC, dataset size and fraud rate" width="1280" height="720" loading="lazy" decoding="async"></picture><span class="tag">Live demo</span></div><div class="pbody"><div class="spec">binary classification · IEEE-CIS · 590,540 transactions</div><h3>Fraud Detection System</h3><p>Scores card transactions for fraud risk in real time and explains every score for the analyst who acts on it.</p><ul class="chips" aria-label="Key results"><li><b>0.911</b> AUC-ROC</li><li><b>590K</b> transactions</li><li><b>106</b> features</li></ul><ul class="badges" aria-label="Tools"><li>XGBoost</li><li>SHAP</li><li>SMOTE</li><li>FastAPI</li><li>Docker</li><li>GitHub Actions</li></ul><div class="plinks"><a href="https://fraud-detection-system-wplk.onrender.com" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/IbtissamBukhari/fraud-detection-system" target="_blank" rel="noopener">Code</a><a href="https://www.linkedin.com/feed/update/urn:li:activity:7518983911654424576/" target="_blank" rel="noopener">LinkedIn post</a><a class="case" href="projects/fraud-detection.html">View project <span class="arrow" aria-hidden="true">→</span></a></div></div></article>
+<article class="pcard reveal" data-category="NLP"><div class="shot"><picture><source srcset="assets/img/sentiment.webp" type="image/webp"><img src="assets/img/sentiment.jpg" alt="Sentiment app showing a positive prediction at 98.5% and the words that drove it" width="1280" height="720" loading="lazy" decoding="async"></picture><span class="tag">Live demo</span></div><div class="pbody"><div class="spec">3-class NLP · RoBERTa · 8-bit ONNX</div><h3>Explainable Sentiment Analysis</h3><p>Classifies reviews as positive, neutral or negative and highlights the words behind each prediction.</p><ul class="chips" aria-label="Key results"><li><b>81%</b> correct on pos/neg</li><li><b>4×</b> smaller model</li><li><b>375 MB</b> peak memory</li></ul><ul class="badges" aria-label="Tools"><li>RoBERTa</li><li>Transformers</li><li>LIME</li><li>ONNX Runtime</li><li>FastAPI</li><li>Docker</li></ul><div class="plinks"><a href="https://sentiment-analyzer-rm0p.onrender.com" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/IbtissamBukhari/sentiment-analyzer" target="_blank" rel="noopener">Code</a><a href="https://www.linkedin.com/feed/update/urn:li:activity:7519340059549024256/" target="_blank" rel="noopener">LinkedIn post</a><a class="case" href="projects/sentiment-analysis.html">View project <span class="arrow" aria-hidden="true">→</span></a></div></div></article>
+<article class="pcard reveal" data-category="Machine Learning"><div class="shot"><picture><source srcset="assets/img/telco.webp" type="image/webp"><img src="assets/img/telco.jpg" alt="Churn predictor showing an 82.9% high-risk score, the factors behind it and suggested actions" width="1280" height="720" loading="lazy" decoding="async"></picture><span class="tag">Live demo</span></div><div class="pbody"><div class="spec">churn prediction · IBM Telco · 7,043 customers</div><h3>Telco Churn Predictor</h3><p>Predicts which customers are about to cancel, explains each score and suggests a retention action.</p><ul class="chips" aria-label="Key results"><li><b>76%</b> of churners caught</li><li><b>0.84</b> ROC-AUC</li><li><b>exact</b> explanations</li></ul><ul class="badges" aria-label="Tools"><li>scikit-learn</li><li>Logistic Regression</li><li>FastAPI</li><li>Pytest</li><li>Docker</li></ul><div class="plinks"><a href="https://telco-churn-predictor-62b1.onrender.com" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/IbtissamBukhari/telco-churn-predictor" target="_blank" rel="noopener">Code</a><a href="https://www.linkedin.com/feed/update/urn:li:activity:7518724342030217216/" target="_blank" rel="noopener">LinkedIn post</a><a class="case" href="projects/telco-churn.html">View project <span class="arrow" aria-hidden="true">→</span></a></div></div></article>
     </div>
   </div>
 </section>
@@ -147,6 +117,7 @@
     <nav aria-label="Elsewhere"><a href="https://github.com/IbtissamBukhari">GitHub</a><a href="https://www.linkedin.com/in/ibtissambukhari">LinkedIn</a><a href="mailto:aliibtissam14@gmail.com">Email</a></nav>
   </div>
 </footer>
-<script src="assets/js/site.js?v=3" defer></script>
+<script src="assets/js/projects.js?v=5" defer></script>
+<script src="assets/js/site.js?v=5" defer></script>
 </body>
 </html>

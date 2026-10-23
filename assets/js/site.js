@@ -25,6 +25,51 @@
     });
   }
 
+  // Project grids: the HTML already contains the cards (so the page works without JS);
+  // here they are refreshed from data/projects.json, which the admin panel edits.
+  var grids = document.querySelectorAll('[data-projects]');
+  if (grids.length && window.Portfolio) {
+    var base = document.body.getAttribute('data-base') || '';
+    Portfolio.load(base).then(function (all) {
+      var visible = all.filter(function (p) { return !p.hidden; });
+      grids.forEach(function (grid) {
+        var mode = grid.getAttribute('data-projects');
+        var list = mode === 'featured' ? visible.filter(function (p) { return p.featured; }).slice(0, 3) : visible;
+        if (!list.length) return;
+        grid.innerHTML = list.map(function (p) { return Portfolio.card(p, base, { reveal: false }); }).join('');
+      });
+      setupFilters(visible);
+    }).catch(function () { setupFilters(null); });
+  }
+
+  function setupFilters(list) {
+    var bar = document.getElementById('filters');
+    var grid = document.querySelector('[data-projects="all"]');
+    if (!bar || !grid) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.pcard'));
+    var counts = {};
+    cards.forEach(function (c) { var k = c.getAttribute('data-category') || 'Other'; counts[k] = (counts[k] || 0) + 1; });
+    var cats = Object.keys(counts); // in the order projects appear, so the most important areas come first
+    var count = document.getElementById('project-count');
+    var btn = function (label, n, on) {
+      return '<button type="button" class="filter" data-filter="' + Portfolio.esc(label) + '" aria-pressed="' + on + '">' +
+        Portfolio.esc(label) + ' <span>' + n + '</span></button>';
+    };
+    bar.innerHTML = btn('All', cards.length, true) + cats.map(function (c) { return btn(c, counts[c], false); }).join('');
+    bar.hidden = false;
+    var apply = function (f) {
+      var shown = 0;
+      cards.forEach(function (c) { var on = f === 'All' || c.getAttribute('data-category') === f; c.hidden = !on; if (on) shown++; });
+      if (count) count.textContent = shown + (shown === 1 ? ' project' : ' projects');
+      bar.querySelectorAll('.filter').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === f)); });
+    };
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('.filter');
+      if (b) apply(b.getAttribute('data-filter'));
+    });
+    apply('All');
+  }
+
   // Hero network: slow-moving nodes with faint links.
   const canvas = document.getElementById('net');
   if (!canvas) return;
