@@ -6,7 +6,7 @@
 <title>Telco Churn Predictor · Ibtissam Bukhari</title>
 <meta name="description" content="Telco Churn Predictor by Syed Ali Ibtissam Bukhari. Predicts which customers are about to cancel, explains each score and suggests a retention action.">
 <meta name="author" content="Syed Ali Ibtissam Bukhari">
-<meta name="theme-color" content="#f5f8fc">
+<meta name="theme-color" content="#f6f5f1">
 <link rel="canonical" href="https://ibtissambukhari.github.io/projects/telco-churn.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Telco Churn Predictor · Ibtissam Bukhari">
@@ -15,30 +15,29 @@
 <meta property="og:image" content="https://ibtissambukhari.github.io/assets/img/og.jpg?v=3">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1b33'/%3E%3Ctext x='15' y='21' font-family='Arial' font-weight='800' font-size='13' fill='%23ffffff' text-anchor='middle'%3EIB%3C/text%3E%3Ccircle cx='26' cy='26' r='2.6' fill='%234cc9ee'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../assets/css/site.css?v=7">
+
+<link rel="preload" href="../assets/fonts/archivo.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=8">
 </head>
 <body data-base="../">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="header-in">
     <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
-    <nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../resume.html">Resume</a><a href="../index.html#contact">Contact</a></nav>
+    <nav class="nav" aria-label="Main"><a href="../index.html"><span class="nav-no" aria-hidden="true">01</span>Home</a><a href="../projects.html" aria-current="page"><span class="nav-no" aria-hidden="true">02</span>Projects</a><a href="../about.html"><span class="nav-no" aria-hidden="true">03</span>About</a><a href="../resume.html"><span class="nav-no" aria-hidden="true">04</span>Resume</a><a href="../index.html#contact"><span class="nav-no" aria-hidden="true">05</span>Contact</a></nav>
   </div>
 </header>
 <main id="main">
 <section class="wrap detail-hero" aria-labelledby="t">
   <p class="crumbs"><a href="../projects.html">Projects</a> / Telco Churn Predictor</p>
-  <p class="eyebrow">churn prediction · IBM Telco · 7,043 customers</p>
-  <h1 id="t" class="page-title">Telco Churn Predictor</h1>
+  <div class="spread-head"><span class="spread-word">Project</span><span class="spread-no">No_03</span><span class="spread-meta">churn prediction · IBM Telco · 7,043 customers</span></div>
+  <h1 id="t" class="detail-title">Telco Churn Predictor</h1>
   <p class="lede">Predicts how likely a telecom customer is to cancel, shows exactly which details drive the score and suggests a retention action. Built on the IBM Telco dataset and served through a validated FastAPI API with a web interface.</p>
-  <div class="actions"><a class="btn primary" href="https://telco-churn-predictor-62b1.onrender.com">Live demo <span class="arrow" aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/IbtissamBukhari/telco-churn-predictor">Code on GitHub</a><a class="btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7518724342030217216/">LinkedIn post</a><a class="btn" href="../projects.html">All projects</a></div>
+  <div class="actions"><a class="btn primary" href="https://telco-churn-predictor-62b1.onrender.com" target="_blank" rel="noopener">Live demo <span class="arrow" aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/IbtissamBukhari/telco-churn-predictor">Code on GitHub</a><a class="btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7518724342030217216/">LinkedIn post</a><a class="btn" href="../projects.html">All projects</a></div>
 </section>
 <div class="wrap">
   <figure class="figure" style="margin-bottom:40px"><picture><source srcset="../assets/img/telco.webp" type="image/webp"><img src="../assets/img/telco.jpg" alt="Churn predictor showing an 82.9% high-risk score, the factors behind it and suggested actions" width="1280" height="720" loading="lazy" decoding="async"></picture><figcaption>A high-risk customer: 82.9% churn probability, the factors that raise it, and suggested retention actions.</figcaption></figure>
-  <div class="metrics" style="margin-bottom:56px"><div class="metric"><span class="num">76%</span><span class="what">Recall on churners</span><span class="ctx">283 of 371 customers who left were flagged in the test set.</span></div><div class="metric"><span class="num">51%</span><span class="what">Precision</span><span class="ctx">About half of flagged customers really left: the accepted cost of high recall.</span></div><div class="metric"><span class="num">0.84</span><span class="what">ROC-AUC</span><span class="ctx">Ranking quality across all thresholds on 1,402 unseen customers.</span></div><div class="metric"><span class="num">26.5%</span><span class="what">Baseline churn</span><span class="ctx">Predicting 'stays' for everyone would be 73.5% accurate and catch no one.</span></div></div>
+  <dl class="numbers detail-numbers"><div><dt>Recall on churners</dt><dd class="n">76%</dd><dd class="ctx">283 of 371 customers who left were flagged in the test set.</dd></div><div><dt>Precision</dt><dd class="n">51%</dd><dd class="ctx">About half of flagged customers really left: the accepted cost of high recall.</dd></div><div><dt>ROC-AUC</dt><dd class="n">0.84</dd><dd class="ctx">Ranking quality across all thresholds on 1,402 unseen customers.</dd></div><div><dt>Baseline churn</dt><dd class="n">26.5%</dd><dd class="ctx">Predicting 'stays' for everyone would be 73.5% accurate and catch no one.</dd></div></dl>
   <div class="detail-grid">
     <article class="prose">
 <h2>The problem</h2>
@@ -75,12 +74,12 @@
     <a class="next" href="ecommerce-analysis.html"><small>Next</small>E-Commerce Sales Analysis</a>
   </nav>
 </div>
-<section class="section" id="contact" aria-labelledby="contact-title">
+<section class="section contact-sec" id="contact" aria-labelledby="contact-title">
   <div class="wrap">
+    <div class="sec-head reveal"><p class="label">(Contact)</p><span class="status">Open to work</span></div>
+    <h2 id="contact-title" class="mega-2 reveal">Let's work<br>together<span class="dot">.</span></h2>
     <div class="contact reveal">
-      <div>
-        <span class="status">Open to work</span>
-        <h2 id="contact-title">Let's talk about ML engineering roles.</h2>
+      <div class="contact-intro">
         <p>I'm looking for Machine Learning Engineer, Data Scientist and NLP Engineer roles. Email or WhatsApp is the quickest way to reach me.</p>
         <ul class="contact-meta">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>On-site in Pakistan or remote</li>
@@ -93,10 +92,10 @@
         </div>
       </div>
       <ul class="contact-list">
-        <li class="has-copy"><a class="c-item" href="mailto:aliibtissam14@gmail.com"><span class="c-ic mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span><span class="c-txt"><span class="k">Email</span><span class="v">aliibtissam14<wbr>@gmail.com</span></span></a><button class="copy" type="button" data-copy="aliibtissam14@gmail.com" aria-label="Copy email address">Copy</button></li>
-        <li><a class="c-item" href="https://wa.me/923485190450?text=Hi%20Ali%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener"><span class="c-ic wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2-.5.7-.6 1-.4l.9 1.6c.1.3 0 .6-.2.8l-.5.5c.5 1 1.3 1.9 2.4 2.4l.5-.5c.2-.2.5-.3.8-.2l1.6.9c.3.2.3.7-.1 1-.6.6-1.5.8-2.3.5a8 8 0 0 1-4.5-4.4c-.3-.8-.1-1.6.4-2.2z" fill="currentColor" stroke="none"/></svg></span><span class="c-txt"><span class="k">WhatsApp</span><span class="v">Message me on WhatsApp</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
-        <li><a class="c-item" href="https://www.linkedin.com/in/ibtissambukhari" target="_blank" rel="noopener"><span class="c-ic li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5V16.5M7.5 7.5v.01M11 16.5v-6M11 13.2c0-1.6 1-2.7 2.4-2.7s2.1 1 2.1 2.6v3.4"/></svg></span><span class="c-txt"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/<wbr>ibtissambukhari</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
-        <li><a class="c-item" href="https://github.com/IbtissamBukhari" target="_blank" rel="noopener"><span class="c-ic gh"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-1.9c-3.12.68-3.78-1.5-3.78-1.5-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.55 0-1.22.44-2.22 1.16-3.01-.12-.29-.5-1.43.11-2.98 0 0 .94-.3 3.09 1.15a10.7 10.7 0 0 1 5.62 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.01 0 4.31-2.63 5.26-5.13 5.54.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg></span><span class="c-txt"><span class="k">GitHub</span><span class="v">github.com/<wbr>IbtissamBukhari</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
+        <li class="has-copy"><a class="c-item" href="mailto:aliibtissam14@gmail.com"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span><span class="c-txt"><span class="k">Email</span><span class="v">aliibtissam14<wbr>@gmail.com</span></span></a><button class="copy" type="button" data-copy="aliibtissam14@gmail.com" aria-label="Copy email address">Copy</button></li>
+        <li><a class="c-item" href="https://wa.me/923485190450?text=Hi%20Ali%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2-.5.7-.6 1-.4l.9 1.6c.1.3 0 .6-.2.8l-.5.5c.5 1 1.3 1.9 2.4 2.4l.5-.5c.2-.2.5-.3.8-.2l1.6.9c.3.2.3.7-.1 1-.6.6-1.5.8-2.3.5a8 8 0 0 1-4.5-4.4c-.3-.8-.1-1.6.4-2.2z" fill="currentColor" stroke="none"/></svg></span><span class="c-txt"><span class="k">WhatsApp</span><span class="v">Message me on WhatsApp</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
+        <li><a class="c-item" href="https://www.linkedin.com/in/ibtissambukhari" target="_blank" rel="noopener"><span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5V16.5M7.5 7.5v.01M11 16.5v-6M11 13.2c0-1.6 1-2.7 2.4-2.7s2.1 1 2.1 2.6v3.4"/></svg></span><span class="c-txt"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/<wbr>ibtissambukhari</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
+        <li><a class="c-item" href="https://github.com/IbtissamBukhari" target="_blank" rel="noopener"><span class="c-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-1.9c-3.12.68-3.78-1.5-3.78-1.5-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.55 0-1.22.44-2.22 1.16-3.01-.12-.29-.5-1.43.11-2.98 0 0 .94-.3 3.09 1.15a10.7 10.7 0 0 1 5.62 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.01 0 4.31-2.63 5.26-5.13 5.54.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg></span><span class="c-txt"><span class="k">GitHub</span><span class="v">github.com/<wbr>IbtissamBukhari</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
       </ul>
     </div>
   </div>
@@ -105,20 +104,21 @@
 <footer class="site-footer">
   <div class="footer-in">
     <div class="footer-brand">
-      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
+      <p class="label">Ibtissam Bukhari — Portfolio 2026</p>
       <p>Machine Learning Engineer building explainable, tested and deployed ML systems: NLP, deep learning, computer vision and MLOps.</p>
     </div>
-    <nav aria-labelledby="f-pages"><h2 id="f-pages">Pages</h2><ul class="footer-links"><li><a href="../projects.html">Projects</a></li><li><a href="../about.html">About</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../index.html#contact">Contact</a></li></ul></nav>
-    <div><h2>Connect</h2><ul class="socials">
+    <nav aria-labelledby="f-pages"><h2 id="f-pages" class="label">Pages</h2><ul class="footer-links"><li><a href="../projects.html">Projects</a></li><li><a href="../about.html">About</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../index.html#contact">Contact</a></li></ul></nav>
+    <div><h2 class="label">Connect</h2><ul class="socials">
       <li><a href="mailto:aliibtissam14@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></a></li>
       <li><a href="https://wa.me/923485190450?text=Hi%20Ali%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2-.5.7-.6 1-.4l.9 1.6c.1.3 0 .6-.2.8l-.5.5c.5 1 1.3 1.9 2.4 2.4l.5-.5c.2-.2.5-.3.8-.2l1.6.9c.3.2.3.7-.1 1-.6.6-1.5.8-2.3.5a8 8 0 0 1-4.5-4.4c-.3-.8-.1-1.6.4-2.2z" fill="currentColor" stroke="none"/></svg></a></li>
       <li><a href="https://www.linkedin.com/in/ibtissambukhari" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5V16.5M7.5 7.5v.01M11 16.5v-6M11 13.2c0-1.6 1-2.7 2.4-2.7s2.1 1 2.1 2.6v3.4"/></svg></a></li>
       <li><a href="https://github.com/IbtissamBukhari" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-1.9c-3.12.68-3.78-1.5-3.78-1.5-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.55 0-1.22.44-2.22 1.16-3.01-.12-.29-.5-1.43.11-2.98 0 0 .94-.3 3.09 1.15a10.7 10.7 0 0 1 5.62 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.01 0 4.31-2.63 5.26-5.13 5.54.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8z"/></svg></a></li>
     </ul></div>
   </div>
+  <p class="wordmark" aria-hidden="true">Ibtissam Bukhari</p>
   <div class="footer-bottom"><span>© 2026 Syed Ali Ibtissam Bukhari</span><a href="#main">Back to top ↑</a></div>
 </footer>
-<script src="../assets/js/projects.js?v=5" defer></script>
-<script src="../assets/js/site.js?v=5" defer></script>
+<script src="../assets/js/projects.js?v=8" defer></script>
+<script src="../assets/js/site.js?v=8" defer></script>
 </body>
 </html>
