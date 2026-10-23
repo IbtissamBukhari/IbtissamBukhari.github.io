@@ -24,7 +24,7 @@
   --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-  --t-mega: clamp(3.4rem, 16vw, 10.5rem);
+  --t-mega: clamp(3.4rem, min(16vw, 21vh), 10.5rem);
   --t-page: clamp(2.6rem, 7vw, 5.2rem);
   --t-h2: clamp(1.9rem, 4.2vw, 3.2rem);
   --t-h3: 1.35rem;
