@@ -110,12 +110,3 @@
   .row2, .img-row { grid-template-columns: minmax(0, 1fr); }
   .adm-repo { grid-template-columns: minmax(0, 1fr); }
 }
-
-/* preview of the new "Project No_" layout in the narrow editor column */
-.adm-preview .spread-body { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-.adm-preview .spread.flip .spread-media { order: 0; }
-.adm-preview .spread-title { font-size: 2rem; }
-.adm-preview .spread-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.adm-preview .spread-stats dd { font-size: 1.4rem; }
-.adm-item .thumb, .img-prev, .icon, .btn.small, .adm-card, .adm-item, .adm-repo, .adm-help, .adm-form input:not([type="checkbox"]):not([type="file"]), .adm-form textarea { border-radius: 2px; }
-.adm-form legend { font-family: var(--display); font-stretch: 75%; text-transform: uppercase; font-size: 1.3rem; }

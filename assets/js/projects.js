@@ -1,13 +1,11 @@
-// Project layouts, rendered from data/projects.json.
-// Shared by the public pages and the admin panel. Mirrors spread() and row() in the page generator.
+// Project cards, rendered from data/projects.json.
+// Shared by the public pages and the admin panel so both show exactly the same card.
 (function () {
   var esc = function (s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   };
-  var EXT = ' target="_blank" rel="noopener"';
-  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
 
   // Only http(s) links and plain relative paths are allowed, so no javascript: URLs get through.
   function safeUrl(u, base) {
@@ -18,7 +16,7 @@
     return (base || '') + u.replace(/^\/+/, '');
   }
 
-  // "View project": the case study if there is one, then the live demo, then the code.
+  // The main "View project" target: the case study if there is one, then the demo, then the code.
   function primaryLink(p, base) {
     var l = p.links || {};
     if (l.caseStudy) return { href: safeUrl(l.caseStudy, base), label: 'View project' };
@@ -27,7 +25,7 @@
     return null;
   }
 
-  function thumb(p, base, compact) {
+  function thumb(p, base) {
     if (p.image) {
       // data:image URLs only occur in the admin preview, for a screenshot that hasn't been published yet
       var src = /^data:image\/(png|jpeg|webp);base64,/.test(p.image) ? p.image : safeUrl(p.image, base);
@@ -35,60 +33,38 @@
       return '<picture>' + webp + '<img src="' + esc(src) + '" alt="' + esc(p.imageAlt || p.title) +
         '" width="1280" height="720" loading="lazy" decoding="async"></picture>';
     }
-    var cat = p.category || 'Project';
-    if (compact) return '<div class="thumb-ph" role="img" aria-label="' + esc(cat) + '"><span>' + esc(cat) + '</span></div>';
-    var steps = (p.schematic && p.schematic.length) ? p.schematic : [cat];
+    var steps = (p.schematic && p.schematic.length) ? p.schematic : [p.category || 'Project'];
     return '<div class="schematic" role="img" aria-label="System overview: ' + esc(steps.join(', ')) + '">' +
-      steps.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('<i aria-hidden="true">↓</i>') + '</div>';
+      steps.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('<i aria-hidden="true">→</i>') + '</div>';
   }
 
-  function smallLinks(p, base) {
-    var l = p.links || {}, out = '';
-    if (l.demo) out += '<a href="' + esc(safeUrl(l.demo, base)) + '"' + EXT + '>' + esc(l.demoLabel || 'Live demo') + ' ↗</a>';
-    if (l.code) out += '<a href="' + esc(safeUrl(l.code, base)) + '"' + EXT + '>Code ↗</a>';
-    if (l.linkedin) out += '<a href="' + esc(safeUrl(l.linkedin, base)) + '"' + EXT + '>LinkedIn post ↗</a>';
-    return out;
-  }
-
-  // Large "Project No_01" section with screenshot, numbers and links.
-  function spread(p, i, base, opts) {
-    base = base || ''; opts = opts || {};
-    var main = primaryLink(p, base), ext = main && main.external ? EXT : '';
-    var media = main ? '<a class="spread-media" href="' + esc(main.href) + '"' + ext + ' tabindex="-1" aria-hidden="true">' + thumb(p, base) + '</a>'
-      : '<div class="spread-media">' + thumb(p, base) + '</div>';
-    var title = main ? '<a href="' + esc(main.href) + '"' + ext + '>' + esc(p.title) + '</a>' : esc(p.title);
-    var stats = (p.results || []).filter(function (r) { return r && (r.value || r.label); }).map(function (r) {
-      return '<div><dt>' + esc(r.label) + '</dt><dd>' + esc(r.value) + '</dd></div>';
+  function card(p, base, opts) {
+    base = base || '';
+    opts = opts || {};
+    var l = p.links || {};
+    var ext = ' target="_blank" rel="noopener"';
+    var links = [];
+    if (l.demo) links.push('<a href="' + esc(safeUrl(l.demo, base)) + '"' + ext + '>' + esc(l.demoLabel || 'Live demo') + '</a>');
+    if (l.code) links.push('<a href="' + esc(safeUrl(l.code, base)) + '"' + ext + '>Code</a>');
+    if (l.linkedin) links.push('<a href="' + esc(safeUrl(l.linkedin, base)) + '"' + ext + '>LinkedIn post</a>');
+    var main = primaryLink(p, base);
+    var view = main ? '<a class="case" href="' + esc(main.href) + '"' + (main.external ? ext : '') + '>' + esc(main.label) +
+      ' <span class="arrow" aria-hidden="true">→</span></a>' : '';
+    var results = (p.results || []).filter(function (r) { return r && (r.value || r.label); }).map(function (r) {
+      return '<li><b>' + esc(r.value) + '</b> ' + esc(r.label) + '</li>';
     }).join('');
-    var stack = (p.stack || []).map(esc).join(' / ');
-    var meta = [p.category, p.tag].filter(Boolean).map(esc).join(' · ');
-    var go = main ? '<a class="go" href="' + esc(main.href) + '"' + ext + '>' + esc(main.label) + ' <span class="arrow" aria-hidden="true">→</span></a>' : '';
-    return '<article class="spread' + (opts.reveal === false ? '' : ' reveal') + (i % 2 ? ' flip' : '') + '" data-category="' + esc(p.category || '') + '">' +
-      '<header class="spread-head"><span class="spread-word">Project</span><span class="spread-no">No_' + pad(i + 1) + '</span><span class="spread-meta">' + meta + '</span></header>' +
-      '<div class="spread-body">' + media + '<div class="spread-text">' +
-      (p.spec ? '<p class="spec">' + esc(p.spec) + '</p>' : '') +
-      '<h3 class="spread-title">' + title + '</h3>' +
-      (p.summary ? '<p class="spread-sum">' + esc(p.summary) + '</p>' : '') +
-      (stats ? '<dl class="spread-stats">' + stats + '</dl>' : '') +
-      (stack ? '<p class="spread-stack">' + stack + '</p>' : '') +
-      '<div class="spread-links">' + go + smallLinks(p, base) + '</div></div></div></article>';
-  }
-
-  // Compact row for the project index.
-  function row(p, i, base, opts) {
-    base = base || ''; opts = opts || {};
-    var main = primaryLink(p, base), ext = main && main.external ? EXT : '';
-    var title = main ? '<a class="prow-link" href="' + esc(main.href) + '"' + ext + '>' + esc(p.title) + '</a>' : esc(p.title);
-    var r0 = (p.results || []).filter(function (r) { return r && r.value; })[0];
-    var links = smallLinks(p, base);
-    return '<article class="prow' + (opts.reveal === false ? '' : ' reveal') + '" data-category="' + esc(p.category || '') + '">' +
-      '<span class="prow-no">' + pad(i + 1) + '</span>' +
-      '<div class="prow-thumb">' + thumb(p, base, true) + '</div>' +
-      '<div class="prow-main"><h3>' + title + '</h3>' + (p.summary ? '<p>' + esc(p.summary) + '</p>' : '') +
-      (links ? '<div class="prow-links">' + links + '</div>' : '') + '</div>' +
-      '<span class="prow-cat">' + esc(p.category || '') + '</span>' +
-      '<span class="prow-stat">' + (r0 ? '<b>' + esc(r0.value) + '</b> ' + esc(r0.label) : '') + '</span>' +
-      '<span class="prow-arrow" aria-hidden="true">→</span></article>';
+    var stack = (p.stack || []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
+    var h = opts.heading || 'h3';
+    return '<article class="pcard' + (opts.reveal === false ? '' : ' reveal') + '" data-category="' + esc(p.category || '') + '">' +
+      '<div class="shot">' + thumb(p, base) + (p.tag ? '<span class="tag">' + esc(p.tag) + '</span>' : '') + '</div>' +
+      '<div class="pbody">' +
+      (p.spec ? '<div class="spec">' + esc(p.spec) + '</div>' : '') +
+      '<' + h + '>' + esc(p.title) + '</' + h + '>' +
+      (p.summary ? '<p>' + esc(p.summary) + '</p>' : '') +
+      (results ? '<ul class="chips" aria-label="Key results">' + results + '</ul>' : '') +
+      (stack ? '<ul class="badges" aria-label="Tools">' + stack + '</ul>' : '') +
+      '<div class="plinks">' + links.join('') + view + '</div>' +
+      '</div></article>';
   }
 
   function load(base) {
@@ -98,8 +74,5 @@
     });
   }
 
-  window.Portfolio = {
-    esc: esc, safeUrl: safeUrl, primaryLink: primaryLink, spread: spread, row: row, load: load,
-    card: function (p, base, opts) { return spread(p, 0, base, opts); }
-  };
+  window.Portfolio = { esc: esc, safeUrl: safeUrl, card: card, load: load, primaryLink: primaryLink };
 })();
