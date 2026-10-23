@@ -18,14 +18,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=14">
+<link rel="stylesheet" href="assets/css/site.css?v=15">
 </head>
 <body data-base="">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="header-in">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
-    <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="about.html">About</a><a href="resume.html">Resume</a><a href="index.html#contact">Contact</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="main-nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="about.html">About</a><a href="resume.html">Resume</a><a href="index.html#contact">Contact</a></nav>
   </div>
 </header>
 <main id="main">
@@ -33,7 +34,7 @@
   <div class="wrap">
     <p class="eyebrow">Projects</p>
     <h1 id="t" class="page-title">Real data, live demos, tested code.</h1>
-    <p class="lede">The four deployed projects run on free hosting and are checked by GitHub Actions on every push. A demo can take up to a minute to wake up the first time. Open a case study for the problem, approach, results and limitations.</p>
+    <p class="lede">Projects I built to solve real-world problems: catching card fraud, explaining what customers think, predicting who will cancel, and spotting road accidents in video. Each one has a live demo you can try, the code on GitHub and a case study on how it was built. A demo can take up to a minute to wake up the first time.</p>
     <h2 class="sr-only">All projects</h2>
     <div class="filter-bar"><div class="filters" id="filters" role="toolbar" aria-label="Filter projects by area" hidden></div><p class="count" id="project-count" aria-live="polite">6 projects</p></div>
     <div class="grid-2" data-projects="all">
@@ -64,6 +65,6 @@
   <div class="footer-bottom"><span>© 2026 Syed Ali Ibtissam Bukhari</span><a href="#main">Back to top ↑</a></div>
 </footer>
 <script src="assets/js/projects.js?v=5" defer></script>
-<script src="assets/js/site.js?v=5" defer></script>
+<script src="assets/js/site.js?v=15" defer></script>
 </body>
 </html>

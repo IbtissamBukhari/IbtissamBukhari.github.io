@@ -18,14 +18,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=14">
+<link rel="stylesheet" href="assets/css/site.css?v=15">
 </head>
 <body data-base="">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="header-in">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
-    <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="resume.html" aria-current="page">Resume</a><a href="index.html#contact">Contact</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="main-nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="resume.html" aria-current="page">Resume</a><a href="index.html#contact">Contact</a></nav>
   </div>
 </header>
 <main id="main">
@@ -57,7 +58,7 @@
       <div class="r-item"><div class="r-row"><b><a href="projects/ecommerce-analysis.html">E-Commerce Sales Analysis and Customer Segmentation</a></b><span>Pandas · RFM</span></div>
         <ul><li>Analysed 96,478 orders (2.4× growth, Black Friday peak of 1,147 orders in a day) and segmented 93,358 customers with RFM, with a reproducible pipeline checked by CI.</li></ul></div>
       <h2>Education</h2>
-      <div class="r-item"><div class="r-row"><b>BS Software Engineering, Mirpur University of Science and Technology</b><span>2022 – 2026</span></div><div class="sub">CGPA 3.7 / 4.0 · Data Structures and Algorithms, Database Systems, Statistics</div></div>
+      <div class="r-item"><div class="r-row"><b>BS Software Engineering, Mirpur University of Science and Technology</b><span>2022 – 2026</span></div><div class="sub">CGPA 3.7 / 4.0</div></div>
       <div class="r-item"><div class="r-row"><b>F.Sc. Pre-Engineering, Global College of Sciences</b><span>2019 – 2021</span></div><div class="sub">Grade: 97%</div></div>
       <h2>Skills</h2>
       <dl class="r-skills">
@@ -66,8 +67,18 @@
         <dt>MLOps</dt><dd>FastAPI, Docker, GitHub Actions, MLflow, ONNX Runtime, Pytest, Render, Vercel</dd>
         <dt>Data</dt><dd>Pandas, NumPy, Matplotlib, Seaborn, EDA, feature engineering, SMOTE, MySQL, SQLite, Git</dd>
       </dl>
-      <h2>Certifications and activities</h2>
-      <div class="r-item"><ul style="padding-left:20px"><li>Complete Data Science, Machine Learning, DL, NLP Bootcamp (Udemy, 2026); Introduction to Programming Using Python (Coursera, 2023); Programming for Everybody (University of Michigan, 2022)</li><li>Executive Committee Member, Software Engineering Society, Mirpur University of Science and Technology; Prime Minister's Youth Laptop Scheme 2023 (merit-based award)</li></ul></div>
+      <h2>Certifications</h2>
+      <div class="r-item"><ul>
+        <li>Complete Data Science, Machine Learning, DL and NLP Bootcamp (Udemy, 2026)</li>
+        <li>Python for Beginners: Variables and Strings (Coursera Project Network, 2025)</li>
+        <li>Introduction to Programming Using Python (Coursera, 2023)</li>
+        <li>Programming for Everybody: Getting Started with Python (University of Michigan, Coursera, 2022)</li>
+      </ul></div>
+      <h2>Awards</h2>
+      <div class="r-item"><div class="r-row"><b>Prime Minister's Youth Laptop Scheme</b><span>2023</span></div><div class="sub">Government of Pakistan · Merit-based award</div></div>
+      <h2>Volunteering</h2>
+      <div class="r-item"><div class="r-row"><b>Executive Committee Member, Software Engineering Society</b><span>Mirpur University of Science and Technology</span></div>
+        <ul><li>Helped organise and run events for fellow students, including a GitHub workshop that taught junior students practical version control.</li></ul></div>
     </article>
   </div>
 </section>
@@ -89,6 +100,6 @@
   <div class="footer-bottom"><span>© 2026 Syed Ali Ibtissam Bukhari</span><a href="#main">Back to top ↑</a></div>
 </footer>
 <script src="assets/js/projects.js?v=5" defer></script>
-<script src="assets/js/site.js?v=5" defer></script>
+<script src="assets/js/site.js?v=15" defer></script>
 </body>
 </html>

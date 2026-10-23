@@ -3,6 +3,20 @@
   document.documentElement.classList.add('js');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Mobile menu: the three-line button opens and closes the page links
+  var header = document.querySelector('.site-header'), menuBtn = document.querySelector('.menu-btn');
+  if (header && menuBtn) {
+    var setMenu = function (open) {
+      header.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    menuBtn.addEventListener('click', function () { setMenu(!header.classList.contains('menu-open')); });
+    header.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && header.classList.contains('menu-open')) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener('click', function (e) { if (!header.contains(e.target)) setMenu(false); });
+  }
+
   // Copy-to-clipboard buttons
   document.querySelectorAll('[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {

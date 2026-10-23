@@ -18,14 +18,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=14">
+<link rel="stylesheet" href="assets/css/site.css?v=15">
 </head>
 <body data-base="">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="header-in">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">IB</span>Ibtissam Bukhari</a>
-    <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html" aria-current="page">About</a><a href="resume.html">Resume</a><a href="index.html#contact">Contact</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="main-nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html" aria-current="page">About</a><a href="resume.html">Resume</a><a href="index.html#contact">Contact</a></nav>
   </div>
 </header>
 <main id="main">
@@ -40,7 +41,7 @@
         <p>My final year project detected road accidents from video with YOLOv12 and triggered emergency alerts automatically. Since then I've focused on NLP and MLOps: transformer models, model compression, experiment tracking and deployment.</p>
       </div>
       <dl class="facts">
-        <div><dt><span class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>Looking for</dt><dd>Machine Learning Engineer, Software Engineer, Data Scientist, NLP Engineer</dd></div>
+        <div><dt><span class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>Looking for</dt><dd>Machine Learning Engineer, AI Engineer, Software Engineer, Data Scientist, NLP Engineer</dd></div>
         <div><dt><span class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Location</dt><dd>Muzaffarabad, Azad Kashmir, Pakistan</dd></div>
         <div><dt><span class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>Languages</dt><dd>English (professional), Urdu (native)</dd></div>
         <div><dt><span class="f-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></span>Links</dt><dd><ul class="link-list"><li><a href="https://github.com/IbtissamBukhari" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://www.linkedin.com/in/ibtissambukhari" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="resume.html">Resume</a></li></ul></dd></div>
@@ -62,7 +63,7 @@
   <div class="wrap">
     <h2 id="edu">Education</h2>
     <div class="timeline" style="margin-top:18px">
-      <div class="tl reveal"><div class="when">2022 – 2026</div><div><h3>BS Software Engineering</h3><div class="where">Mirpur University of Science and Technology (MUST), Mirpur · CGPA 3.7 / 4.0</div><p>Final year project: AI road accident detection with YOLOv12. Executive Committee Member of the Software Engineering Society; helped run a GitHub workshop for junior students.</p></div></div>
+      <div class="tl reveal"><div class="when">2022 – 2026</div><div><h3>BS Software Engineering</h3><div class="where">Mirpur University of Science and Technology (MUST), Mirpur · CGPA 3.7 / 4.0</div><p>Final year project: AI road accident detection with YOLOv12, with an AI agent that writes incident reports and sends emergency alerts.</p></div></div>
       <div class="tl reveal"><div class="when">2019 – 2021</div><div><h3>F.Sc. Pre-Engineering</h3><div class="where">Global College of Sciences · 97%</div></div></div>
     </div>
   </div>
@@ -83,13 +84,30 @@
 
 <section class="section" aria-labelledby="ce">
   <div class="wrap">
-    <h2 id="ce">Certifications and awards</h2>
+    <h2 id="ce">Certifications</h2>
     <div class="timeline" style="margin-top:18px">
       <div class="tl reveal"><div class="when">2026</div><div><h3>Complete Data Science, Machine Learning, DL and NLP Bootcamp</h3><div class="where">Udemy · Krish Naik · 101.5 hours</div><a class="cert-link" href="https://ude.my/UC-a697261f-4ba6-44dc-9044-5c61433839aa" target="_blank" rel="noopener">View certificate <span aria-hidden="true">↗</span></a></div></div>
       <div class="tl reveal"><div class="when">2025</div><div><h3>Python for Beginners: Variables and Strings</h3><div class="where">Coursera Project Network</div><a class="cert-link" href="https://coursera.org/verify/6C3UG1VXS5II" target="_blank" rel="noopener">View certificate <span aria-hidden="true">↗</span></a></div></div>
-      <div class="tl reveal"><div class="when">2023</div><div><h3>Prime Minister's Youth Laptop Scheme</h3><div class="where">Government of Pakistan · merit-based award</div></div></div>
       <div class="tl reveal"><div class="when">2023</div><div><h3>Introduction to Programming Using Python</h3><div class="where">Coursera</div></div></div>
       <div class="tl reveal"><div class="when">2022</div><div><h3>Programming for Everybody (Getting Started with Python)</h3><div class="where">University of Michigan, Coursera</div><a class="cert-link" href="https://coursera.org/verify/ZA7BEDE834ZN" target="_blank" rel="noopener">View certificate <span aria-hidden="true">↗</span></a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="aw">
+  <div class="wrap">
+    <h2 id="aw">Awards</h2>
+    <div class="timeline" style="margin-top:18px">
+      <div class="tl reveal"><div class="when">2023</div><div><h3>Prime Minister's Youth Laptop Scheme</h3><div class="where">Government of Pakistan · Merit-based award</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="vol">
+  <div class="wrap">
+    <h2 id="vol">Volunteering</h2>
+    <div class="timeline" style="margin-top:18px">
+      <div class="tl reveal"><div class="when">During BS</div><div><h3>Executive Committee Member, Software Engineering Society</h3><div class="where">Mirpur University of Science and Technology</div><p>Helped organise and run events for fellow students, including a GitHub workshop that taught junior students practical version control.</p></div></div>
     </div>
   </div>
 </section>
@@ -99,18 +117,17 @@
       <div>
         <span class="status">Open to work</span>
         <h2 id="contact-title">Let's talk about ML engineering roles.</h2>
-        <p>I'm looking for Machine Learning Engineer, Software Engineer, Data Scientist and NLP Engineer roles. Email or WhatsApp is the quickest way to reach me.</p>
+        <p>I'm looking for Machine Learning Engineer, AI Engineer, Software Engineer, Data Scientist and NLP Engineer roles. Email or WhatsApp is the quickest way to reach me.</p>
         <ul class="contact-meta">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>On-site in Pakistan or remote</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Muzaffarabad, Azad Kashmir, Pakistan</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Pakistan time (UTC+5)</li>
         </ul>
         <div class="actions">
-          <a class="btn primary" href="resume.html">View resume <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn primary" href="mailto:aliibtissam14@gmail.com">Email me <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
       <ul class="contact-list">
-        <li class="has-copy"><a class="c-item" href="mailto:aliibtissam14@gmail.com"><span class="c-ic mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span><span class="c-txt"><span class="k">Email</span><span class="v">aliibtissam14<wbr>@gmail.com</span></span></a><button class="copy" type="button" data-copy="aliibtissam14@gmail.com" aria-label="Copy email address">Copy</button></li>
         <li><a class="c-item" href="https://wa.me/923485190450?text=Hi%20Ali%2C%20I%20saw%20your%20portfolio.%20Would%20you%20be%20available%20for%20a%20quick%20chat%3F" target="_blank" rel="noopener"><span class="c-ic wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2-.5.7-.6 1-.4l.9 1.6c.1.3 0 .6-.2.8l-.5.5c.5 1 1.3 1.9 2.4 2.4l.5-.5c.2-.2.5-.3.8-.2l1.6.9c.3.2.3.7-.1 1-.6.6-1.5.8-2.3.5a8 8 0 0 1-4.5-4.4c-.3-.8-.1-1.6.4-2.2z" fill="currentColor" stroke="none"/></svg></span><span class="c-txt"><span class="k">WhatsApp</span><span class="v">Message me on WhatsApp</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
         <li><a class="c-item" href="https://www.linkedin.com/in/ibtissambukhari" target="_blank" rel="noopener"><span class="c-ic li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5V16.5M7.5 7.5v.01M11 16.5v-6M11 13.2c0-1.6 1-2.7 2.4-2.7s2.1 1 2.1 2.6v3.4"/></svg></span><span class="c-txt"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/<wbr>ibtissambukhari</span></span><span class="c-go" aria-hidden="true">↗</span></a></li>
       </ul>
@@ -135,6 +152,6 @@
   <div class="footer-bottom"><span>© 2026 Syed Ali Ibtissam Bukhari</span><a href="#main">Back to top ↑</a></div>
 </footer>
 <script src="assets/js/projects.js?v=5" defer></script>
-<script src="assets/js/site.js?v=5" defer></script>
+<script src="assets/js/site.js?v=15" defer></script>
 </body>
 </html>
