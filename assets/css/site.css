@@ -365,3 +365,10 @@ tr.best td { color: var(--accent); font-weight: 600; background: #f0f8fc; }
   .copy { display: none; }
   .contact-list li.has-copy .c-item { padding-right: 12px; }
 }
+
+/* About page: links as a list, certificate links */
+.link-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.link-list a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.link-list a:hover { text-decoration: underline; }
+.cert-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-weight: 600; font-size: 0.95rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(8, 111, 148, 0.3); }
+.cert-link:hover { border-bottom-color: currentColor; }
