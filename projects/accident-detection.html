@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Road Accident Detection · Ibtissam Bukhari</title>
-<meta name="description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents in video in real time and starts the emergency response automatically.">
+<meta name="description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents and fire in images and video with a custom YOLOv12 model, rates their severity and alerts responders.">
 <meta name="author" content="Syed Ali Ibtissam Bukhari">
 <meta name="theme-color" content="#f5f8fc">
 <link rel="canonical" href="https://ibtissambukhari.github.io/projects/accident-detection.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AI Road Accident Detection · Ibtissam Bukhari">
-<meta property="og:description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents in video in real time and starts the emergency response automatically.">
+<meta property="og:description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents and fire in images and video with a custom YOLOv12 model, rates their severity and alerts responders.">
 <meta property="og:url" content="https://ibtissambukhari.github.io/projects/accident-detection.html">
 <meta property="og:image" content="https://ibtissambukhari.github.io/assets/img/og.jpg?v=4">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,32 +32,50 @@
 <main id="main">
 <section class="wrap detail-hero" aria-labelledby="t">
   <p class="crumbs"><a href="../projects.html">Projects</a> / AI Road Accident Detection</p>
-  <p class="eyebrow">object detection · video · YOLOv12</p>
+  <p class="eyebrow">object detection · YOLOv12n · 3 classes</p>
   <h1 id="t" class="page-title">AI Road Accident Detection</h1>
-  <p class="lede">A team final year project at Mirpur University of Science and Technology (MUST): a system that detects road accidents in video in real time, writes an incident report and sends emergency alerts automatically, so help can be dispatched without waiting for someone to call.</p>
-  <div class="actions"><a class="btn" href="../projects.html">All projects</a></div>
+  <p class="lede">Our final year project at Mirpur University of Science and Technology (MUST), built with Qosain Hyder Bukhari: a full-stack system around a custom YOLOv12 model that detects road accidents and fire in images and video, rates their severity, records every incident and alerts responders with annotated evidence.</p>
+  <div class="actions"><a class="btn" href="https://github.com/IbtissamBukhari/Accident_detection_system_Yolov12">Code on GitHub</a><a class="btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520538278907768833/">LinkedIn post</a><a class="btn" href="../projects.html">All projects</a></div>
 </section>
 <div class="wrap">
-  <figure class="figure" style="margin-bottom:40px"><div class="shot" style="border:0"><div class="schematic" role="img" aria-label="System overview"><span>Video feed</span><i aria-hidden="true">→</i><span>YOLOv12 detector</span><i aria-hidden="true">→</i><span>AI agent report</span><i aria-hidden="true">→</i><span>Emergency alert</span></div></div><figcaption>System overview: video in, accident detected, report written, alert sent.</figcaption></figure>
-  <div class="metrics" style="margin-bottom:56px"><div class="metric"><span class="num">88.6%</span><span class="what">mAP@50</span><span class="ctx">Detection quality of the custom-trained YOLOv12 model.</span></div><div class="metric"><span class="num">87%</span><span class="what">Precision</span><span class="ctx">Of the accidents the model reported, 87% were real.</span></div><div class="metric"><span class="num">84%</span><span class="what">Recall</span><span class="ctx">The model found 84% of the accidents in the test footage.</span></div><div class="metric"><span class="num">Real time</span><span class="what">Video analysis</span><span class="ctx">Frames are analysed as the video plays.</span></div></div>
+  <figure class="figure" style="margin-bottom:40px"><picture><source srcset="../assets/img/accident.webp" type="image/webp"><img src="../assets/img/accident.jpg" alt="YOLOv12 predictions on unseen road-scene images, with severity class and confidence for each detected accident" width="1280" height="720" loading="lazy" decoding="async"></picture><figcaption>Predictions on unseen test images: the severity class and confidence for each detected accident.</figcaption></figure>
+  <div class="metrics" style="margin-bottom:56px"><div class="metric"><span class="num">89.9%</span><span class="what">mAP@50</span><span class="ctx">Detection quality on a held-out test set of 1,800 images and 2,443 labelled objects.</span></div><div class="metric"><span class="num">92.5%</span><span class="what">Precision</span><span class="ctx">Of the accidents the model reports, 92.5% are real, so responders aren't flooded with false alarms.</span></div><div class="metric"><span class="num">86.8%</span><span class="what">Recall</span><span class="ctx">Share of real accidents found. Moderate and severe crashes are above 96%; fire is the weak class.</span></div><div class="metric"><span class="num">99.4%</span><span class="what">mAP@50, severe</span><span class="ctx">The most serious crashes, where a fast response matters most, are detected most reliably.</span></div></div>
   <div class="detail-grid">
     <article class="prose">
 <h2>The problem</h2>
-<p>After a road accident, the time until help is called matters. Cameras already watch many roads, but someone has to notice an accident and report it. This project automates that chain: detect the accident, describe it, and alert the right people.</p>
+<p>After a road accident, the time until help is called matters. Cameras already watch many roads, but someone has to notice an accident, judge how serious it is and report it. This system lets an operator upload road-scene images or video, has a model flag accidents and their severity, and notifies responders with evidence.</p>
+<p>The model supports a human decision; it is not an emergency dispatch or a medical assessment. That shaped the design: every detection is stored with its confidence, boxes and media so a person can review it.</p>
+<h2>Data</h2>
+<p>A 3-class road-scene dataset: <code>fire</code>, <code>moderate</code> and <code>severe</code>. We trained YOLOv12n for 40 epochs at 640 px and evaluated it once on a held-out test set of <strong>1,800 images containing 2,443 objects</strong>.</p>
 <h2>Approach</h2>
 <ol class="steps">
-<li><b>Train a detector.</b> Custom-trained YOLOv12 on accident footage for real-time detection from video.</li>
-<li><b>Generate the report.</b> An AI agent using transformer-based language models writes an incident report from the detection.</li>
-<li><b>Alert automatically.</b> The system sends emergency alerts as soon as an accident is confirmed.</li>
-<li><b>Build the backend.</b> FastAPI with JWT authentication, SQLAlchemy and Alembic, automated alerts, a Pytest suite and Docker deployment.</li>
+<li><b>Train the detector.</b> Fine-tuned YOLOv12n (Ultralytics, PyTorch) and kept the training curves, PR curves and confusion matrix with the model bundle.</li>
+<li><b>Serve it securely.</b> A FastAPI backend with JWT role-based authentication. Images return annotated results immediately; videos run as background jobs with live progress.</li>
+<li><b>Record every incident.</b> SQLAlchemy and Alembic migrations on MySQL store events, confidence, boxes, media and audit information.</li>
+<li><b>Assess and alert.</b> An AI agent (Gemini, with a local fallback) writes an assessment for each incident, and email and WhatsApp alerts send responders the annotated frames.</li>
+<li><b>Show it to operators.</b> A React, Vite and Tailwind dashboard for incident history, alerts and analytics.</li>
+<li><b>Package and test.</b> Docker Compose runs MySQL, the backend and the frontend together; Pytest covers the API, security, alerts and workflows.</li>
 </ol>
 <h2>Results</h2>
-<p>The detector reached 88.6% mAP@50 with 87% precision and 84% recall. mAP@50 counts a detection as correct when its box overlaps the real accident by at least half, averaged across confidence levels.</p>
-<p>The code is not public because it is a team university project. I'm happy to walk through it in an interview.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Class</th><th class="n">Precision</th><th class="n">Recall</th><th class="n">mAP@50</th><th class="n">mAP@50-95</th></tr></thead>
+<tbody>
+<tr class="best"><td>All classes</td><td class="n">92.5%</td><td class="n">86.8%</td><td class="n">89.9%</td><td class="n">79.0%</td></tr>
+<tr><td>Severe</td><td class="n">96.9%</td><td class="n">99.0%</td><td class="n">99.4%</td><td class="n">93.2%</td></tr>
+<tr><td>Moderate</td><td class="n">97.6%</td><td class="n">96.9%</td><td class="n">97.3%</td><td class="n">94.3%</td></tr>
+<tr><td>Fire</td><td class="n">83.0%</td><td class="n">64.3%</td><td class="n">72.9%</td><td class="n">49.5%</td></tr>
+</tbody></table></div>
+<p>Scores are from the held-out test split, not the validation set used during training. mAP@50 counts a detection as correct when its box overlaps the real object by at least half.</p>
+<figure class="figure"><picture><source srcset="../assets/img/accident-fire.webp" type="image/webp"><img src="../assets/img/accident-fire.jpg" alt="YOLOv12 fire predictions on validation images, with a box and confidence score around flames and smoke" width="1280" height="976" loading="lazy" decoding="async"></picture><figcaption>Fire predictions on a validation batch. Smoke and flames have no clear edges, which is why fire is the hardest class.</figcaption></figure>
+<div class="callout"><p><b>Where it falls short.</b> Fire is the weakest class at 64.3% recall: smoke and flames have no clear box edges and vary a lot from scene to scene. Collecting more fire images is the next improvement.</p></div>
+<h2>System</h2>
+<div class="flow"><div class="node"><b>React dashboard</b><span>upload, history, alerts</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>FastAPI + JWT</b><span>images, video jobs</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>YOLOv12 + OpenCV</b><span>detect and annotate</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>MySQL</b><span>incidents and audit</span></div><span class="sep" aria-hidden="true">→</span><div class="node"><b>Alerts</b><span>email, WhatsApp</span></div></div>
+<h2>Limitations</h2>
+<ul><li>Built for academic demonstration and controlled local deployment, not live emergency dispatch.</li><li>Video jobs are held in memory, which suits a single-process demo but not a multi-worker production setup.</li><li>Fire recall needs more and more varied training images.</li></ul>
     </article>
     <aside class="aside" aria-label="Project facts">
-      <div class="box"><h3>At a glance</h3><ul><li>Team final year project, Mirpur University of Science and Technology (MUST)</li><li>YOLOv12 object detection</li><li>AI agent for incident reports</li><li>FastAPI, JWT, Docker</li></ul></div>
-      <div class="box"><h3>Tools</h3><ul class="badges"><li>YOLOv12</li><li>OpenCV</li><li>FastAPI</li><li>JWT</li><li>SQLAlchemy</li><li>Docker</li></ul></div>
+      <div class="box"><h3>At a glance</h3><ul><li>Final year project with Qosain Hyder Bukhari, MUST</li><li>YOLOv12n, 40 epochs, 640 px</li><li>3 classes: fire, moderate, severe</li><li>1,800 held-out test images</li><li>FastAPI, React, MySQL, Docker Compose</li></ul></div>
+      <div class="box"><h3>Tools</h3><ul class="badges"><li>YOLOv12</li><li>PyTorch</li><li>OpenCV</li><li>FastAPI</li><li>MySQL</li><li>React</li><li>Docker</li></ul></div>
     </aside>
   </div>
   <nav class="pager" aria-label="More projects">

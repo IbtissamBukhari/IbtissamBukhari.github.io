@@ -172,13 +172,13 @@
   {
     "id": "accident-detection",
     "title": "AI Road Accident Detection",
-    "summary": "Detects road accidents in video in real time and starts the emergency response automatically.",
-    "spec": "object detection · video · YOLOv12",
+    "summary": "Detects road accidents and fire in images and video with a custom YOLOv12 model, rates their severity and alerts responders.",
+    "spec": "object detection · YOLOv12n · 3 classes",
     "tag": "Final year project",
     "category": "Computer Vision",
-    "image": "",
-    "imageWebp": "",
-    "imageAlt": "",
+    "image": "assets/img/accident.jpg",
+    "imageWebp": "assets/img/accident.webp",
+    "imageAlt": "YOLOv12 predictions on unseen road-scene images, with severity class and confidence for each detected accident",
     "schematic": [
       "Video feed",
       "YOLOv12 detector",
@@ -187,32 +187,33 @@
     ],
     "results": [
       {
-        "value": "88.6%",
+        "value": "89.9%",
         "label": "mAP@50"
       },
       {
-        "value": "87%",
+        "value": "92.5%",
         "label": "precision"
       },
       {
-        "value": "84%",
+        "value": "86.8%",
         "label": "recall"
       }
     ],
     "stack": [
       "YOLOv12",
+      "PyTorch",
       "OpenCV",
       "FastAPI",
-      "JWT",
-      "SQLAlchemy",
+      "MySQL",
+      "React",
       "Docker"
     ],
     "links": {
       "demo": "",
       "demoLabel": "",
-      "code": "",
+      "code": "https://github.com/IbtissamBukhari/Accident_detection_system_Yolov12",
       "caseStudy": "projects/accident-detection.html",
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7520538278907768833/"
     },
     "featured": false,
     "hidden": false
