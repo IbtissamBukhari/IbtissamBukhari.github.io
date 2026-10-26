@@ -172,8 +172,8 @@
   {
     "id": "accident-detection",
     "title": "AI Road Accident Detection",
-    "summary": "Detects road accidents and fire in images and video with a custom YOLOv12 model, rates their severity and alerts responders.",
-    "spec": "object detection · YOLOv12n · 3 classes",
+    "summary": "Detects road accidents and fire in video in real time, rates their severity and starts the emergency response automatically.",
+    "spec": "object detection · video · YOLOv12",
     "tag": "Final year project",
     "category": "Computer Vision",
     "image": "assets/img/accident.jpg",

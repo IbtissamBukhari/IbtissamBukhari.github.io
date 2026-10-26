@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Road Accident Detection · Ibtissam Bukhari</title>
-<meta name="description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents and fire in images and video with a custom YOLOv12 model, rates their severity and alerts responders.">
+<meta name="description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents and fire in video in real time, rates their severity and starts the emergency response automatically.">
 <meta name="author" content="Syed Ali Ibtissam Bukhari">
 <meta name="theme-color" content="#f5f8fc">
 <link rel="canonical" href="https://ibtissambukhari.github.io/projects/accident-detection.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AI Road Accident Detection · Ibtissam Bukhari">
-<meta property="og:description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents and fire in images and video with a custom YOLOv12 model, rates their severity and alerts responders.">
+<meta property="og:description" content="AI Road Accident Detection by Syed Ali Ibtissam Bukhari. Detects road accidents and fire in video in real time, rates their severity and starts the emergency response automatically.">
 <meta property="og:url" content="https://ibtissambukhari.github.io/projects/accident-detection.html">
 <meta property="og:image" content="https://ibtissambukhari.github.io/assets/img/og.jpg?v=4">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,9 +32,9 @@
 <main id="main">
 <section class="wrap detail-hero" aria-labelledby="t">
   <p class="crumbs"><a href="../projects.html">Projects</a> / AI Road Accident Detection</p>
-  <p class="eyebrow">object detection · YOLOv12n · 3 classes</p>
+  <p class="eyebrow">object detection · video · YOLOv12</p>
   <h1 id="t" class="page-title">AI Road Accident Detection</h1>
-  <p class="lede">Our final year project at Mirpur University of Science and Technology (MUST), built with Qosain Hyder Bukhari: a full-stack system around a custom YOLOv12 model that detects road accidents and fire in images and video, rates their severity, records every incident and alerts responders with annotated evidence.</p>
+  <p class="lede">Our final year project at Mirpur University of Science and Technology (MUST), built with Qosain Hyder Bukhari: a full-stack system around a custom YOLOv12 model that detects road accidents and fire in video in real time, rates their severity, writes an incident report and sends emergency alerts automatically, so help can be dispatched without waiting for someone to call.</p>
   <div class="actions"><a class="btn" href="https://github.com/IbtissamBukhari/Accident_detection_system_Yolov12">Code on GitHub</a><a class="btn" href="https://www.linkedin.com/feed/update/urn:li:activity:7520538278907768833/">LinkedIn post</a><a class="btn" href="../projects.html">All projects</a></div>
 </section>
 <div class="wrap">
@@ -43,13 +43,13 @@
   <div class="detail-grid">
     <article class="prose">
 <h2>The problem</h2>
-<p>After a road accident, the time until help is called matters. Cameras already watch many roads, but someone has to notice an accident, judge how serious it is and report it. This system lets an operator upload road-scene images or video, has a model flag accidents and their severity, and notifies responders with evidence.</p>
+<p>After a road accident, the time until help is called matters. Cameras already watch many roads, but someone has to notice an accident, judge how serious it is and report it. This project automates that chain: detect the accident in real time, rate how serious it is, describe it, and alert the right people with evidence.</p>
 <p>The model supports a human decision; it is not an emergency dispatch or a medical assessment. That shaped the design: every detection is stored with its confidence, boxes and media so a person can review it.</p>
 <h2>Data</h2>
 <p>A 3-class road-scene dataset: <code>fire</code>, <code>moderate</code> and <code>severe</code>. We trained YOLOv12n for 40 epochs at 640 px and evaluated it once on a held-out test set of <strong>1,800 images containing 2,443 objects</strong>.</p>
 <h2>Approach</h2>
 <ol class="steps">
-<li><b>Train the detector.</b> Fine-tuned YOLOv12n (Ultralytics, PyTorch) and kept the training curves, PR curves and confusion matrix with the model bundle.</li>
+<li><b>Train the detector.</b> Custom-trained YOLOv12n (Ultralytics, PyTorch) for real-time detection from video, and kept the training curves, PR curves and confusion matrix with the model bundle.</li>
 <li><b>Serve it securely.</b> A FastAPI backend with JWT role-based authentication. Images return annotated results immediately; videos run as background jobs with live progress.</li>
 <li><b>Record every incident.</b> SQLAlchemy and Alembic migrations on MySQL store events, confidence, boxes, media and audit information.</li>
 <li><b>Assess and alert.</b> An AI agent (Gemini, with a local fallback) writes an assessment for each incident, and email and WhatsApp alerts send responders the annotated frames.</li>
