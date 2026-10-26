@@ -1,5 +1,54 @@
 [
   {
+    "id": "accident-detection",
+    "title": "AI Road Accident Detection",
+    "summary": "Detects road accidents and fire in video in real time, rates their severity and starts the emergency response automatically.",
+    "spec": "object detection · video · YOLOv12",
+    "tag": "Final year project",
+    "category": "Computer Vision",
+    "image": "assets/img/accident.jpg",
+    "imageWebp": "assets/img/accident.webp",
+    "imageAlt": "YOLOv12 predictions on unseen road-scene images, with severity class and confidence for each detected accident",
+    "schematic": [
+      "Video feed",
+      "YOLOv12 detector",
+      "AI agent report",
+      "Emergency alert"
+    ],
+    "results": [
+      {
+        "value": "89.9%",
+        "label": "mAP@50"
+      },
+      {
+        "value": "92.5%",
+        "label": "precision"
+      },
+      {
+        "value": "86.8%",
+        "label": "recall"
+      }
+    ],
+    "stack": [
+      "YOLOv12",
+      "PyTorch",
+      "OpenCV",
+      "FastAPI",
+      "MySQL",
+      "React",
+      "Docker"
+    ],
+    "links": {
+      "demo": "",
+      "demoLabel": "",
+      "code": "https://github.com/IbtissamBukhari/Accident_detection_system_Yolov12",
+      "caseStudy": "projects/accident-detection.html",
+      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7520538278907768833/"
+    },
+    "featured": false,
+    "hidden": false
+  },
+  {
     "id": "fraud-detection",
     "title": "Fraud Detection System",
     "summary": "Scores card transactions for fraud risk in real time and explains every score for the analyst who acts on it.",
@@ -165,55 +214,6 @@
       "code": "https://github.com/IbtissamBukhari/ecommerce-sales-analysis",
       "caseStudy": "projects/ecommerce-analysis.html",
       "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7518419239867871232/"
-    },
-    "featured": false,
-    "hidden": false
-  },
-  {
-    "id": "accident-detection",
-    "title": "AI Road Accident Detection",
-    "summary": "Detects road accidents and fire in video in real time, rates their severity and starts the emergency response automatically.",
-    "spec": "object detection · video · YOLOv12",
-    "tag": "Final year project",
-    "category": "Computer Vision",
-    "image": "assets/img/accident.jpg",
-    "imageWebp": "assets/img/accident.webp",
-    "imageAlt": "YOLOv12 predictions on unseen road-scene images, with severity class and confidence for each detected accident",
-    "schematic": [
-      "Video feed",
-      "YOLOv12 detector",
-      "AI agent report",
-      "Emergency alert"
-    ],
-    "results": [
-      {
-        "value": "89.9%",
-        "label": "mAP@50"
-      },
-      {
-        "value": "92.5%",
-        "label": "precision"
-      },
-      {
-        "value": "86.8%",
-        "label": "recall"
-      }
-    ],
-    "stack": [
-      "YOLOv12",
-      "PyTorch",
-      "OpenCV",
-      "FastAPI",
-      "MySQL",
-      "React",
-      "Docker"
-    ],
-    "links": {
-      "demo": "",
-      "demoLabel": "",
-      "code": "https://github.com/IbtissamBukhari/Accident_detection_system_Yolov12",
-      "caseStudy": "projects/accident-detection.html",
-      "linkedin": "https://www.linkedin.com/feed/update/urn:li:activity:7520538278907768833/"
     },
     "featured": false,
     "hidden": false
